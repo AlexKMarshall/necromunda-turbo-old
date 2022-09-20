@@ -14,6 +14,7 @@
     "preset": "jest-presets/jest/node"
   },
   "dependencies": {
+    "@prisma/client": "^4.3.1",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
@@ -32,6 +33,7 @@
     "eslint-config-custom-server": "workspace:*",
     "jest": "^29.0.3",
     "jest-presets": "workspace:*",
+    "prisma": "^4.3.1",
     "supertest": "^6.2.4",
     "tsconfig": "workspace:*",
     "tsup": "^6.2.3",
