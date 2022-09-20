@@ -1,9 +1,9 @@
-import { log } from "logger";
-import Head from "next/head";
-import { CounterButton, NewTabLink } from "ui";
+import { log } from 'logger'
+import Head from 'next/head'
+import { CounterButton, NewTabLink } from 'ui'
 
 export default function Store() {
-  log("Hey! This is Home.");
+  log('Hey! This is Home.')
   return (
     <div className="container">
       <Head>
@@ -15,10 +15,10 @@ export default function Store() {
       </h1>
       <CounterButton />
       <p className="description">
-        Built With{" "}
-        <NewTabLink href="https://turborepo.org/">Turborepo</NewTabLink> +{" "}
+        Built With{' '}
+        <NewTabLink href="https://turborepo.org/">Turborepo</NewTabLink> +{' '}
         <NewTabLink href="https://nextjs.org/">Next.js</NewTabLink>
       </p>
     </div>
-  );
+  )
 }
