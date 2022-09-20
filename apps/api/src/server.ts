@@ -5,15 +5,15 @@ import cors from '@koa/cors'
 import morgan from 'koa-morgan'
 import { PrismaClient } from '@prisma/client'
 import { z } from 'zod'
-import { UUID } from 'validation'
+import { JSONDate, UUID } from 'validation'
 const prisma = new PrismaClient()
 
 const Faction = z.object({
   id: UUID,
   name: z.string().min(1),
   description: z.string().nullish(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  createdAt: JSONDate,
+  updatedAt: JSONDate,
 })
 
 const FactionCompact = Faction.omit({ description: true })
