@@ -1,7 +1,7 @@
 import { UUID, JSONDate } from 'validation'
 import { z } from 'zod'
-import { ResourceConflictException } from './exceptions'
-import { prisma } from './prisma'
+import { ResourceConflictException } from 'src/exceptions'
+import { prisma } from 'src/prisma'
 
 export const getFactionCount = async () => {
   return prisma.faction.count()

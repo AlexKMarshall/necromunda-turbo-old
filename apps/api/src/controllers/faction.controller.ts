@@ -4,7 +4,7 @@ import {
   CreateFactionDTO,
   getFactionCount,
   getFactions,
-} from '../faction'
+} from 'src/faction'
 
 export const getFactionCollection = async (ctx: Context) => {
   const [factions, totalCount] = await Promise.all([
