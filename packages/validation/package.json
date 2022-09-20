@@ -1,0 +1,36 @@
+{
+  "name": "validation",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsc -w",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "preset": "jest-presets/jest/node"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.3",
+    "eslint": "^8.24.0",
+    "eslint-config-custom": "workspace:*",
+    "jest": "^29.0.3",
+    "jest-presets": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "zod": "^3.19.1"
+  }
+}

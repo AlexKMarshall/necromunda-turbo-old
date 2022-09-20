@@ -20,7 +20,9 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-morgan": "^1.0.1",
-    "logger": "workspace:*"
+    "logger": "workspace:*",
+    "validation": "workspace:*",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.2",
