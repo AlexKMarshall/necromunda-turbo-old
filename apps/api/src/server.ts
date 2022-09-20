@@ -2,6 +2,7 @@ import { json, urlencoded } from 'body-parser'
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
+import { router } from './router'
 
 type Server = ReturnType<typeof express>
 
@@ -19,6 +20,7 @@ export const createServer = (): Server => {
     .get('/healthz', (req, res) => {
       return res.json({ ok: true })
     })
+    .use(router)
 
   return app
 }
