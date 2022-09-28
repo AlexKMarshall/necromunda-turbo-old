@@ -75,6 +75,26 @@ importers:
       tsup: 6.2.3_typescript@4.8.3
       typescript: 4.8.3
 
+  apps/domain:
+    specifiers:
+      '@types/jest': ^29.0.3
+      '@types/node': ^18.7.19
+      eslint: ^8.24.0
+      eslint-config-custom: workspace:*
+      jest: ^29.0.3
+      jest-presets: workspace:*
+      tsconfig: workspace:*
+      typescript: ^4.8.3
+    devDependencies:
+      '@types/jest': 29.0.3
+      '@types/node': 18.7.19
+      eslint: 8.24.0
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      jest: 29.0.3_@types+node@18.7.19
+      jest-presets: link:../../packages/jest-presets
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.8.3
+
   apps/web:
     specifiers:
       '@testing-library/jest-dom': ^5.16.5
