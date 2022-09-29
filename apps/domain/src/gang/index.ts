@@ -1,1 +1,1 @@
-export * from './foundGang/foundGang.publicTypes'
+export * from './foundGang/foundGangNew'
