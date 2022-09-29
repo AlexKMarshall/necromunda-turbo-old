@@ -2,7 +2,7 @@ import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
 import cors from '@koa/cors'
 import morgan from 'koa-morgan'
-import { router } from 'src/router'
+import { router } from './router'
 
 export const createServer = () => {
   const app = new Koa()

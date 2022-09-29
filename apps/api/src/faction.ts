@@ -1,7 +1,7 @@
 import { UUID, JSONDate } from 'validation'
 import { z } from 'zod'
-import { ResourceConflictException } from 'src/exceptions'
-import { prisma } from 'src/prisma'
+import { ResourceConflictException } from './exceptions'
+import { prisma } from './prisma'
 
 export const getFactionCount = async () => {
   return prisma.faction.count()
@@ -11,7 +11,9 @@ export const getFactions = async () => {
   const factions = await prisma.faction.findMany({
     select: factionCompactSelect,
   })
-  return factions.map((faction) => FactionCompact.strict().parse(faction))
+  return factions.map((faction: unknown) =>
+    FactionCompact.strict().parse(faction)
+  )
 }
 
 export const createFaction = async (createFactionDTO: CreateFactionDTO) => {
