@@ -24,7 +24,12 @@ export type GangFounded = {
 
 export type FoundGangEvent = GangFounded
 
-export type FoundGang = (unvalidatedGang: UnvalidatedGang) => FoundGangEvent[]
+export type FoundGangDependencies = {
+  checkFactionExists: CheckFactionExists
+}
+export type FoundGang = (
+  dependencies: FoundGangDependencies
+) => (unvalidatedGang: UnvalidatedGang) => FoundGangEvent[]
 
 // Implementation Details types
 
@@ -33,6 +38,7 @@ type ValidateGang = (
   checkFactionExists: CheckFactionExists
 ) => (unvalidatedGang: UnvalidatedGang) => ValidatedGang
 type Predicate<T> = (x: T) => boolean
+type CreateEvents = (validatedGang: ValidatedGang) => FoundGangEvent[]
 
 const predicateToPassThru =
   <T>(errorMessage: string) =>
@@ -69,4 +75,21 @@ export const validateGang: ValidateGang =
       name,
       factionId,
     }
+  }
+
+export const createEvents: CreateEvents = (validatedGang) => {
+  return [
+    {
+      event: 'gangFounded',
+      details: validatedGang,
+    },
+  ]
+}
+
+export const foundGang: FoundGang =
+  ({ checkFactionExists }) =>
+  (unvalidatedGang) => {
+    const _validateGang = validateGang(checkFactionExists)
+
+    return pipe(unvalidatedGang, _validateGang, createEvents)
   }
