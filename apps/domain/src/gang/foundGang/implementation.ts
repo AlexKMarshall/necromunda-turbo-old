@@ -1,6 +1,6 @@
 import { create as createGangId } from './gangId'
 import { FactionId, create as createFactionId } from './factionId'
-import { create as createString50 } from './string50'
+import { create as createString50 } from '../../common/string50'
 import { pipe } from 'fp-ts/function'
 import {
   CheckFactionExists,

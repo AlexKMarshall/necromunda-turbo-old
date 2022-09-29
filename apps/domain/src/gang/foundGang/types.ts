@@ -1,6 +1,6 @@
 import { FactionId } from './factionId'
 import { GangId } from './gangId'
-import { String50 } from './string50'
+import { String50 } from '../../common/string50'
 
 /**
  * External dependencies

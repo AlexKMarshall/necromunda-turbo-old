@@ -1,5 +1,5 @@
 import { Opaque } from 'type-fest'
-import * as UUID from './uuid'
+import * as UUID from '../../common/uuid'
 
 type URI = 'GangId'
 

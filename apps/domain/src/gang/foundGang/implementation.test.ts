@@ -1,6 +1,6 @@
 import { toValidFactionId, validateGang } from './implementation'
 import { describe, it, expect } from 'vitest'
-import * as UUID from './uuid'
+import * as UUID from '../../common/uuid'
 
 describe('toValidFactionId', () => {
   it('should return id if it is found', () => {
