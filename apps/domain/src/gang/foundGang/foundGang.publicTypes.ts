@@ -1,5 +1,5 @@
 // Inputs
-import { FactionId, GangId, GangName } from '../types'
+import { UncheckedFactionId, GangId, GangName } from '../types'
 
 export type UnvalidatedGang = {
   factionId: string
@@ -9,7 +9,7 @@ export type UnvalidatedGang = {
 // Outputs (success)
 export type ValidatedGang = {
   id: GangId
-  factionId: FactionId
+  factionId: UncheckedFactionId
   name: GangName
 }
 

@@ -1,20 +1,39 @@
 // Validation step
 
-import { FactionId } from '../types'
+import { z } from 'zod'
+import {
+  GangId,
+  GangName,
+  UncheckedFactionId,
+  validateFactionId,
+} from '../types'
 import {
   FoundGangEvent,
   UnvalidatedGang,
   ValidatedGang,
 } from './foundGang.publicTypes'
 
-type CheckFactionIdExists = (factionId: FactionId) => true
+type CheckFactionIdExists = (factionId: UncheckedFactionId) => true
 
 // Validated Gang
 
 type ValidateGang = (
   checkFactionIdExists: CheckFactionIdExists
-) => (unvalidedGang: UnvalidatedGang) => ValidatedGang
+) => (unvalidatedGang: UnvalidatedGang) => ValidatedGang
 
 // Create events
 
 type CreateEvents = (validatedGang: ValidatedGang) => FoundGangEvent[]
+
+// Implementation
+
+const validateGang: ValidateGang =
+  (checkFactionIdExists) => (unvalidatedGang) => {
+    const ValidGang = z.object({
+      id: GangId,
+      factionId: validateFactionId(checkFactionIdExists),
+      name: GangName,
+    })
+
+    return ValidGang.parse(unvalidatedGang)
+  }
