@@ -39,7 +39,7 @@ export const toValidFactionId =
 export const validateGang: ValidateGang =
   (checkFactionExists) => (unvalidatedGang) => {
     const id = createGangId()
-    const name = pipe(unvalidatedGang.name, createString50)
+    const name = pipe(unvalidatedGang.name, createString50('name'))
     const factionId = pipe(
       unvalidatedGang.factionId,
       toValidFactionId(checkFactionExists)
