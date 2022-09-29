@@ -28,8 +28,10 @@ export type FoundGang = (unvalidatedGang: UnvalidatedGang) => FoundGangEvent[]
 
 // Implementation Details types
 
-type ValidateGang = (unvalidatedGang: UnvalidatedGang) => ValidatedGang
 type CheckFactionExists = (factionId: FactionId) => boolean
+type ValidateGang = (
+  checkFactionExists: CheckFactionExists
+) => (unvalidatedGang: UnvalidatedGang) => ValidatedGang
 type Predicate<T> = (x: T) => boolean
 
 const predicateToPassThru =
@@ -53,13 +55,16 @@ export const toValidFactionId =
     return pipe(factionId, createFactionId, checkFaction)
   }
 
-const validateGang: ValidateGang = (unvalidatedGang) => {
-  const id = createGangId()
-  const name = createString50(unvalidatedGang.name)
-  const factionId = createFactionId(unvalidatedGang.factionId)
-  return {
-    id,
-    name,
-    factionId,
+export const validateGang: ValidateGang =
+  (checkFactionExists) => (unvalidatedGang) => {
+    const id = createGangId()
+    const name = createString50(unvalidatedGang.name)
+    const factionId = toValidFactionId(checkFactionExists)(
+      unvalidatedGang.factionId
+    )
+    return {
+      id,
+      name,
+      factionId,
+    }
   }
-}
