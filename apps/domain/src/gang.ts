@@ -1,4 +1,5 @@
 import * as E from 'fp-ts/Either'
+import { z } from 'zod'
 
 export type Gang = {
   id: GangId
@@ -8,7 +9,8 @@ export type Gang = {
 
 type FactionId = unknown
 type GangId = unknown
-type GangName = unknown
+const GangName = z.string().min(3).max(50)
+type GangName = z.infer<typeof GangName>
 
 type UnvalidatedGang = {
   factionId: string
