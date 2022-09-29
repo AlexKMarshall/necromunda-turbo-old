@@ -1,39 +1,14 @@
-import { GangId, create as createGangId } from './gangId'
+import { create as createGangId } from './gangId'
 import { FactionId, create as createFactionId } from './factionId'
-import { String50, create as createString50 } from './string50'
-import { Opaque } from 'type-fest'
+import { create as createString50 } from './string50'
 import { pipe } from 'fp-ts/function'
+import {
+  CheckFactionExists,
+  UnvalidatedGang,
+  ValidatedGang,
+  FoundGangEvent,
+} from './types'
 
-// Public API
-
-export type UnvalidatedGang = {
-  factionId: string
-  name: string
-}
-
-export type ValidatedGang = {
-  id: GangId
-  factionId: FactionId
-  name: String50
-}
-
-export type GangFounded = {
-  event: 'gangFounded'
-  details: ValidatedGang
-}
-
-export type FoundGangEvent = GangFounded
-
-export type FoundGangDependencies = {
-  checkFactionExists: CheckFactionExists
-}
-export type FoundGang = (
-  dependencies: FoundGangDependencies
-) => (unvalidatedGang: UnvalidatedGang) => FoundGangEvent[]
-
-// Implementation Details types
-
-type CheckFactionExists = (factionId: FactionId) => boolean
 type ValidateGang = (
   checkFactionExists: CheckFactionExists
 ) => (unvalidatedGang: UnvalidatedGang) => ValidatedGang
@@ -85,11 +60,3 @@ export const createEvents: CreateEvents = (validatedGang) => {
     },
   ]
 }
-
-export const foundGang: FoundGang =
-  ({ checkFactionExists }) =>
-  (unvalidatedGang) => {
-    const _validateGang = validateGang(checkFactionExists)
-
-    return pipe(unvalidatedGang, _validateGang, createEvents)
-  }
