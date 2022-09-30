@@ -10,13 +10,13 @@ import {
   ValidatedGang,
   FoundGangEvent,
 } from './types'
+import { InvalidUUIDError } from '../../common/uuid'
 
 type ValidateGang = (
   checkFactionExists: CheckFactionExists
 ) => (
   unvalidatedGang: UnvalidatedGang
 ) => E.Either<GangValidationError, ValidatedGang>
-type Predicate<T> = (x: T) => boolean
 type CreateEvents = (validatedGang: ValidatedGang) => FoundGangEvent[]
 
 export class FactionDoesNotExistError extends Error {
@@ -34,7 +34,9 @@ export class FactionDoesNotExistError extends Error {
 
 export const toValidFactionId =
   (checkFactionExists: CheckFactionExists) =>
-  (factionId: string): E.Either<FactionDoesNotExistError, FactionId> => {
+  (
+    factionId: string
+  ): E.Either<FactionDoesNotExistError | InvalidUUIDError, FactionId> => {
     const checkFaction = (factionId: FactionId) => {
       if (checkFactionExists(factionId)) {
         return E.right(factionId)
@@ -42,14 +44,14 @@ export const toValidFactionId =
       return E.left(FactionDoesNotExistError.of(factionId))
     }
 
-    return pipe(factionId, createFactionId, checkFaction)
+    return pipe(factionId, createFactionId, E.chainW(checkFaction))
   }
 
 export const validateGang: ValidateGang =
   (checkFactionExists) => (unvalidatedGang) => {
     return pipe(unvalidatedGang, ({ name, factionId }) =>
       sequenceS(E.Apply)({
-        id: pipe(createGangId(), E.right),
+        id: createGangId(),
         name: pipe(name, createString50('name'), E.right),
         factionId: pipe(factionId, toValidFactionId(checkFactionExists)),
       })
@@ -65,4 +67,4 @@ export const createEvents: CreateEvents = (validatedGang) => {
   ]
 }
 
-export type GangValidationError = FactionDoesNotExistError
+export type GangValidationError = FactionDoesNotExistError | InvalidUUIDError

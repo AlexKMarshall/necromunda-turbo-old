@@ -7,10 +7,11 @@ import { describe, it, expect } from 'vitest'
 import * as UUID from '../../common/uuid'
 import { pipe } from 'fp-ts/function'
 import * as E from 'fp-ts/Either'
+import { v4 as uuid } from 'uuid'
 
 describe('toValidFactionId', () => {
   it('should return id if it is found', () => {
-    const factionId = UUID.create()
+    const factionId = uuid()
     const checkFactionExists = () => true
 
     expect(toValidFactionId(checkFactionExists)(factionId)).toStrictEqualRight(
@@ -18,7 +19,7 @@ describe('toValidFactionId', () => {
     )
   })
   it('should return error if id is not found', () => {
-    const factionId = UUID.create()
+    const factionId = uuid()
     const checkFactionExists = () => false
 
     expect(toValidFactionId(checkFactionExists)(factionId)).toEqualLeft(
@@ -29,7 +30,9 @@ describe('toValidFactionId', () => {
     const factionId = 'abc'
     const checkFactionExists = () => false
 
-    expect(() => toValidFactionId(checkFactionExists)(factionId)).toThrowError()
+    expect(toValidFactionId(checkFactionExists)(factionId)).toEqualLeft(
+      expect.any(UUID.InvalidUUIDError)
+    )
   })
 })
 
@@ -37,7 +40,7 @@ describe('validateGang', () => {
   it('should return a valid gang if everything is correct', () => {
     const unvalidatedGang = {
       name: 'Test gang name',
-      factionId: UUID.create(),
+      factionId: uuid(),
     }
     const checkFactionExists = () => true
 

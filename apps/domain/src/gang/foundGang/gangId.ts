@@ -1,12 +1,10 @@
-import { Opaque } from 'type-fest'
 import * as UUID from '../../common/uuid'
+import * as E from 'fp-ts/Either'
 
-type URI = 'GangId'
+export type GangId = string
 
-export type GangId = Opaque<string, URI>
+type Create = (gangId?: string) => E.Either<UUID.InvalidUUIDError, GangId>
 
-type Create = (gangId?: string) => GangId
-
-export const create: Create = (gangId): GangId => {
-  return UUID.create<URI>(gangId)
+export const create: Create = (gangId) => {
+  return UUID.parse(gangId)
 }
