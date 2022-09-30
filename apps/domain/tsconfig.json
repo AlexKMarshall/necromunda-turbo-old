@@ -3,9 +3,10 @@
     "lib": ["ES2015"],
     "module": "CommonJS",
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": ".",
+    "baseUrl": "."
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist", "build", ".build"],
   "extends": "tsconfig/base.json",
-  "include": ["src", "./setupTests.ts"]
+  "include": ["."]
 }
