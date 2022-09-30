@@ -10,7 +10,9 @@ describe('foundGang', () => {
       factionId: UUID.create(),
     }
 
-    expect(foundGang({ checkFactionExists })(unvalidatedGang)).toStrictEqual([
+    expect(
+      foundGang({ checkFactionExists })(unvalidatedGang)
+    ).toStrictEqualRight([
       {
         event: 'gangFounded',
         details: {

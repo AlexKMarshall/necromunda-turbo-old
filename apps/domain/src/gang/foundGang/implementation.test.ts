@@ -1,6 +1,8 @@
 import { toValidFactionId, validateGang } from './implementation'
 import { describe, it, expect } from 'vitest'
 import * as UUID from '../../common/uuid'
+import { pipe } from 'fp-ts/function'
+import * as E from 'fp-ts/Either'
 
 describe('toValidFactionId', () => {
   it('should return id if it is found', () => {
@@ -33,7 +35,9 @@ describe('validateGang', () => {
     }
     const checkFactionExists = () => true
 
-    expect(validateGang(checkFactionExists)(unvalidatedGang)).toStrictEqual({
+    expect(
+      pipe(unvalidatedGang, validateGang(checkFactionExists))
+    ).toStrictEqualRight({
       name: unvalidatedGang.name,
       factionId: unvalidatedGang.factionId,
       id: expect.any(String),

@@ -1,6 +1,8 @@
 import { FactionId } from './factionId'
 import { GangId } from './gangId'
 import { String50 } from '../../common/string50'
+import { GangValidationError } from './implementation'
+import * as E from 'fp-ts/Either'
 
 /**
  * External dependencies
@@ -30,9 +32,13 @@ export type GangFounded = {
 
 export type FoundGangEvent = GangFounded
 
+export type FoundGangError = GangValidationError
+
 export type FoundGangDependencies = {
   checkFactionExists: CheckFactionExists
 }
 export type FoundGang = (
   dependencies: FoundGangDependencies
-) => (unvalidatedGang: UnvalidatedGang) => FoundGangEvent[]
+) => (
+  unvalidatedGang: UnvalidatedGang
+) => E.Either<FoundGangError, FoundGangEvent[]>
