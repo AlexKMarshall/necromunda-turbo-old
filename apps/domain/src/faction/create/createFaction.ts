@@ -1,7 +1,12 @@
 import { pipe } from 'fp-ts/lib/function'
-import { createEvents, validateFaction } from './implementation'
+import {
+  createEvents,
+  validateFaction,
+  validateFactionT,
+} from './implementation'
 import * as E from 'fp-ts/Either'
-import { CreateFaction } from './types'
+import * as TE from 'fp-ts/TaskEither'
+import { CreateFaction, CreateFactionT } from './types'
 
 export const createFaction: CreateFaction =
   ({ checkFactionNameExists }) =>
@@ -10,5 +15,15 @@ export const createFaction: CreateFaction =
       unvalidatedFaction,
       validateFaction(checkFactionNameExists),
       E.map(createEvents)
+    )
+  }
+
+export const createFactionT: CreateFactionT =
+  ({ checkFactionNameExists }) =>
+  (unvalidatedFaction) => {
+    return pipe(
+      unvalidatedFaction,
+      validateFactionT(checkFactionNameExists),
+      TE.map(createEvents)
     )
   }
