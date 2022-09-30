@@ -2,13 +2,17 @@ import { sequenceS } from 'fp-ts/lib/Apply'
 import { flow, pipe } from 'fp-ts/lib/function'
 import * as E from 'fp-ts/Either'
 import * as String50 from '../../common/string50'
-import { UnvalidatedFaction, ValidatedFaction } from './createFaction'
+import {
+  CreateFactionEvent,
+  UnvalidatedFaction,
+  ValidatedFaction,
+} from './createFaction'
 import * as FactionId from './factionId'
 import { ConstrainedStringError } from '../../common/constrained'
 import { Opaque } from 'type-fest'
 import * as FactionName from './name'
 
-type FactionValidationError =
+export type FactionValidationError =
   | ConstrainedStringError
   | FactionNameAlreadyExistsError
 
@@ -62,3 +66,9 @@ export const validateFaction: ValidateFaction =
       })
     )
   }
+
+type CreateEvents = (validatedFaction: ValidatedFaction) => CreateFactionEvent[]
+
+export const createEvents: CreateEvents = (validatedFaction) => {
+  return [{ event: 'factionCreated', details: validatedFaction }]
+}
