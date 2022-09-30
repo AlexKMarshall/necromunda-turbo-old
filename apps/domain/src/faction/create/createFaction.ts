@@ -1,9 +1,9 @@
 import { pipe } from 'fp-ts/lib/function'
 import { createEvents, validateFaction } from './implementation'
 import * as TE from 'fp-ts/TaskEither'
-import { CreateFactionT } from './types'
+import { CreateFaction } from './types'
 
-export const createFaction: CreateFactionT =
+export const createFaction: CreateFaction =
   ({ checkFactionNameExists }) =>
   (unvalidatedFaction) => {
     return pipe(

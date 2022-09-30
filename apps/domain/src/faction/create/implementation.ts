@@ -10,7 +10,6 @@ import {
   ValidatedFaction,
   CreateFactionEvent,
   CheckFactionNameExists,
-  CheckFactionNameExistsT,
 } from './types'
 import * as TE from 'fp-ts/TaskEither'
 import * as T from 'fp-ts/Task'
@@ -21,12 +20,6 @@ export type FactionValidationError =
 
 type ValidateFaction = (
   checkFactionNameExists: CheckFactionNameExists
-) => (
-  unvalidatedFaction: UnvalidatedFaction
-) => E.Either<FactionValidationError, ValidatedFaction>
-
-type ValidateFactionT = (
-  checkFactionNameExists: CheckFactionNameExistsT
 ) => (
   unvalidatedFaction: UnvalidatedFaction
 ) => TE.TaskEither<FactionValidationError, ValidatedFaction>
@@ -49,7 +42,7 @@ const _tag = (name: FactionName.FactionName): UniqueFactionName =>
 export type UniqueFactionName = Opaque<string, 'UniqueFactionName'>
 
 const toUniqueFactionName =
-  (checkFactionNameExists: CheckFactionNameExistsT) =>
+  (checkFactionNameExists: CheckFactionNameExists) =>
   (
     name: FactionName.FactionName
   ): TE.TaskEither<FactionNameAlreadyExistsError, UniqueFactionName> => {
@@ -65,7 +58,7 @@ const toUniqueFactionName =
   }
 
 export const toValidFactionNameT = (
-  checkFactionNameExists: CheckFactionNameExistsT
+  checkFactionNameExists: CheckFactionNameExists
 ) =>
   flow(
     FactionName.parse('name'),
@@ -73,7 +66,7 @@ export const toValidFactionNameT = (
     TE.chainW(toUniqueFactionName(checkFactionNameExists))
   )
 
-export const validateFaction: ValidateFactionT =
+export const validateFaction: ValidateFaction =
   (checkFactionExists) => (unvalidatedFaction) => {
     return pipe(unvalidatedFaction, ({ name }) =>
       sequenceS(TE.ApplySeq)({
