@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { UnvalidatedFaction } from './createFaction'
 import { toValidFactionName, validateFaction } from './implementation'
+import { UnvalidatedFaction } from './types'
 
 describe('toValidFactionName', () => {
   it('should pass a name that does not exist already', () => {
