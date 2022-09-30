@@ -91,17 +91,7 @@ export const toValidFactionNameT = (
     TE.chainW(toUniqueFactionNameT(checkFactionNameExists))
   )
 
-export const validateFaction: ValidateFaction =
-  (checkFactionExists) => (unvalidatedFaction) => {
-    return pipe(unvalidatedFaction, ({ name }) =>
-      sequenceS(E.Apply)({
-        id: pipe(FactionId.create(), E.right),
-        name: pipe(name, toValidFactionName(checkFactionExists)),
-      })
-    )
-  }
-
-export const validateFactionT: ValidateFactionT =
+export const validateFaction: ValidateFactionT =
   (checkFactionExists) => (unvalidatedFaction) => {
     return pipe(unvalidatedFaction, ({ name }) =>
       sequenceS(TE.ApplySeq)({

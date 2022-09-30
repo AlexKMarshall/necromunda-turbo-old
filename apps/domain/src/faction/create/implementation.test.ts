@@ -3,7 +3,6 @@ import {
   toValidFactionName,
   toValidFactionNameT,
   validateFaction,
-  validateFactionT,
 } from './implementation'
 import { UnvalidatedFaction } from './types'
 import * as T from 'fp-ts/Task'
@@ -40,28 +39,13 @@ describe('toValidFactionNameT', () => {
 })
 
 describe('validateFaction', () => {
-  it('should pass a valid faction', () => {
-    const unvalidatedFaction: UnvalidatedFaction = {
-      name: 'Orlock',
-    }
-    const checkFactionExists = () => false
-    expect(
-      validateFaction(checkFactionExists)(unvalidatedFaction)
-    ).toStrictEqualRight({
-      id: expect.any(String),
-      name: unvalidatedFaction.name,
-    })
-  })
-})
-
-describe('validateFactionT', () => {
   it('should pass a valid faction', async () => {
     const unvalidatedFaction: UnvalidatedFaction = {
       name: 'Orlock',
     }
     const checkFactionExists = () => T.of(false)
     expect(
-      await validateFactionT(checkFactionExists)(unvalidatedFaction)()
+      await validateFaction(checkFactionExists)(unvalidatedFaction)()
     ).toStrictEqualRight({
       id: expect.any(String),
       name: unvalidatedFaction.name,
