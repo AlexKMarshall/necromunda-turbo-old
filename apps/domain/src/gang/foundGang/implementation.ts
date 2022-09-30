@@ -2,6 +2,7 @@ import { create as createGangId } from './gangId'
 import { FactionId, create as createFactionId } from './factionId'
 import { create as createString50 } from '../../common/string50'
 import { pipe } from 'fp-ts/function'
+import { sequenceS } from 'fp-ts/lib/Apply'
 import * as E from 'fp-ts/Either'
 import {
   CheckFactionExists,
@@ -18,22 +19,27 @@ type ValidateGang = (
 type Predicate<T> = (x: T) => boolean
 type CreateEvents = (validatedGang: ValidatedGang) => FoundGangEvent[]
 
-const predicateToPassThru =
-  <T>(errorMessage: string) =>
-  (predicate: Predicate<T>) =>
-  (value: T): T => {
-    if (predicate(value)) return value
-    throw new Error(errorMessage)
+export class FactionDoesNotExistError extends Error {
+  public _tag: 'FactionDoesNotExistError'
+
+  private constructor(factionId: string) {
+    super(`Faction: ${factionId} does not exist`)
+    this._tag = 'FactionDoesNotExistError'
   }
+
+  public static of(factionId: string): FactionDoesNotExistError {
+    return new FactionDoesNotExistError(factionId)
+  }
+}
 
 export const toValidFactionId =
   (checkFactionExists: CheckFactionExists) =>
-  (factionId: string): FactionId => {
+  (factionId: string): E.Either<FactionDoesNotExistError, FactionId> => {
     const checkFaction = (factionId: FactionId) => {
-      const errorMessage = `Invalid factionId: ${factionId}`
-      return predicateToPassThru<FactionId>(errorMessage)(checkFactionExists)(
-        factionId
-      )
+      if (checkFactionExists(factionId)) {
+        return E.right(factionId)
+      }
+      return E.left(FactionDoesNotExistError.of(factionId))
     }
 
     return pipe(factionId, createFactionId, checkFaction)
@@ -41,22 +47,13 @@ export const toValidFactionId =
 
 export const validateGang: ValidateGang =
   (checkFactionExists) => (unvalidatedGang) => {
-    try {
-      const id = createGangId()
-      const name = pipe(unvalidatedGang.name, createString50('name'))
-      const factionId = pipe(
-        unvalidatedGang.factionId,
-        toValidFactionId(checkFactionExists)
-      )
-
-      return E.right({
-        id,
-        name,
-        factionId,
+    return pipe(unvalidatedGang, ({ name, factionId }) =>
+      sequenceS(E.Apply)({
+        id: pipe(createGangId(), E.right),
+        name: pipe(name, createString50('name'), E.right),
+        factionId: pipe(factionId, toValidFactionId(checkFactionExists)),
       })
-    } catch {
-      return E.left(GangValidationError.of())
-    }
+    )
   }
 
 export const createEvents: CreateEvents = (validatedGang) => {
@@ -68,15 +65,4 @@ export const createEvents: CreateEvents = (validatedGang) => {
   ]
 }
 
-export class GangValidationError extends Error {
-  public _tag: 'GangValidationError'
-
-  private constructor() {
-    super('Gang fails validation')
-    this._tag = 'GangValidationError'
-  }
-
-  public static of(): GangValidationError {
-    return new GangValidationError()
-  }
-}
+export type GangValidationError = FactionDoesNotExistError
