@@ -26,7 +26,7 @@ describe('toValidFactionId', () => {
       expect.any(FactionDoesNotExistError)
     )
   })
-  it('should throw if id is not a UUID', () => {
+  it('should return error if id is not a UUID', () => {
     const factionId = 'abc'
     const checkFactionExists = () => false
 

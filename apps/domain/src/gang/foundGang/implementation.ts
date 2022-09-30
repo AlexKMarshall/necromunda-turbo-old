@@ -11,6 +11,7 @@ import {
   FoundGangEvent,
 } from './types'
 import { InvalidUUIDError } from '../../common/uuid'
+import { ConstrainedStringError } from '../../common/constrained'
 
 type ValidateGang = (
   checkFactionExists: CheckFactionExists
@@ -52,7 +53,7 @@ export const validateGang: ValidateGang =
     return pipe(unvalidatedGang, ({ name, factionId }) =>
       sequenceS(E.Apply)({
         id: E.right(createGangId()),
-        name: pipe(name, createString50('name'), E.right),
+        name: pipe(name, createString50('name')),
         factionId: pipe(factionId, toValidFactionId(checkFactionExists)),
       })
     )
@@ -67,4 +68,7 @@ export const createEvents: CreateEvents = (validatedGang) => {
   ]
 }
 
-export type GangValidationError = FactionDoesNotExistError | InvalidUUIDError
+export type GangValidationError =
+  | FactionDoesNotExistError
+  | InvalidUUIDError
+  | ConstrainedStringError
