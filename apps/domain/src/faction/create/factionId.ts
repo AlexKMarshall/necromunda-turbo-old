@@ -1,7 +1,7 @@
 import * as UUID from '../../common/uuid'
 import * as E from 'fp-ts/Either'
 import { Opaque, UnwrapOpaque } from 'type-fest'
-import { pipe } from 'fp-ts/lib/function'
+import { flow, pipe } from 'fp-ts/lib/function'
 
 export type FactionId = Opaque<UnwrapOpaque<UUID.UUID>, 'FactionId'>
 
@@ -13,3 +13,5 @@ const _tag = (factionId: UUID.UUID): FactionId =>
 export const parse: Create = (factionId) => {
   return pipe(factionId, UUID.parse, E.map(_tag))
 }
+
+export const create = flow(UUID.create, _tag)
