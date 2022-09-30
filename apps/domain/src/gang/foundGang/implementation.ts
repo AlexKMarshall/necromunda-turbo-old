@@ -1,5 +1,5 @@
 import { create as createGangId } from './gangId'
-import { FactionId, create as createFactionId } from './factionId'
+import { FactionId, parse as createFactionId } from './factionId'
 import { create as createString50 } from '../../common/string50'
 import { pipe } from 'fp-ts/function'
 import { sequenceS } from 'fp-ts/lib/Apply'
@@ -51,7 +51,7 @@ export const validateGang: ValidateGang =
   (checkFactionExists) => (unvalidatedGang) => {
     return pipe(unvalidatedGang, ({ name, factionId }) =>
       sequenceS(E.Apply)({
-        id: createGangId(),
+        id: E.right(createGangId()),
         name: pipe(name, createString50('name'), E.right),
         factionId: pipe(factionId, toValidFactionId(checkFactionExists)),
       })

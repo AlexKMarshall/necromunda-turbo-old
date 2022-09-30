@@ -1,10 +1,14 @@
 import * as UUID from '../../common/uuid'
 import * as E from 'fp-ts/Either'
+import { Opaque, UnwrapOpaque } from 'type-fest'
+import { pipe } from 'fp-ts/lib/function'
 
-export type GangId = string
+export type GangId = Opaque<UnwrapOpaque<UUID.UUID>>
 
-type Create = (gangId?: string) => E.Either<UUID.InvalidUUIDError, GangId>
+const _tag = (gangId: UUID.UUID): GangId => UUID.value(gangId) as GangId
 
-export const create: Create = (gangId) => {
-  return UUID.parse(gangId)
+type Create = () => GangId
+
+export const create: Create = () => {
+  return pipe(UUID.create(), _tag)
 }
