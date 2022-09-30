@@ -10,7 +10,10 @@ import {
   ValidatedFaction,
   CreateFactionEvent,
   CheckFactionNameExists,
+  CheckFactionNameExistsT,
 } from './types'
+import * as TE from 'fp-ts/TaskEither'
+import * as T from 'fp-ts/Task'
 
 export type FactionValidationError =
   | ConstrainedStringError
@@ -21,6 +24,12 @@ type ValidateFaction = (
 ) => (
   unvalidatedFaction: UnvalidatedFaction
 ) => E.Either<FactionValidationError, ValidatedFaction>
+
+type ValidateFactionT = (
+  checkFactionNameExists: CheckFactionNameExistsT
+) => (
+  unvalidatedFaction: UnvalidatedFaction
+) => TE.TaskEither<FactionValidationError, ValidatedFaction>
 
 class FactionNameAlreadyExistsError extends Error {
   public _tag: 'FactionNameAlreadyExistsError'
@@ -49,12 +58,37 @@ const toUniqueFactionName =
     return pipe(name, _tag, E.right)
   }
 
+const toUniqueFactionNameT =
+  (checkFactionNameExists: CheckFactionNameExistsT) =>
+  (
+    name: FactionName.FactionName
+  ): TE.TaskEither<FactionNameAlreadyExistsError, UniqueFactionName> => {
+    return pipe(
+      name,
+      checkFactionNameExists,
+      T.map((exists) =>
+        exists
+          ? pipe(name, FactionNameAlreadyExistsError.of, E.left)
+          : pipe(name, _tag, E.right)
+      )
+    )
+  }
+
 export const toValidFactionName = (
   checkFactionNameExists: CheckFactionNameExists
 ) =>
   flow(
     FactionName.parse('name'),
     E.chainW(toUniqueFactionName(checkFactionNameExists))
+  )
+
+export const toValidFactionNameT = (
+  checkFactionNameExists: CheckFactionNameExistsT
+) =>
+  flow(
+    FactionName.parse('name'),
+    TE.fromEither,
+    TE.chainW(toUniqueFactionNameT(checkFactionNameExists))
   )
 
 export const validateFaction: ValidateFaction =
