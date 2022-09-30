@@ -47,18 +47,8 @@ const _tag = (name: FactionName.FactionName): UniqueFactionName =>
   FactionName.value(name) as UniqueFactionName
 
 export type UniqueFactionName = Opaque<string, 'UniqueFactionName'>
-const toUniqueFactionName =
-  (checkFactionNameExists: CheckFactionNameExists) =>
-  (
-    name: FactionName.FactionName
-  ): E.Either<FactionNameAlreadyExistsError, UniqueFactionName> => {
-    if (checkFactionNameExists(name)) {
-      return pipe(name, FactionNameAlreadyExistsError.of, E.left)
-    }
-    return pipe(name, _tag, E.right)
-  }
 
-const toUniqueFactionNameT =
+const toUniqueFactionName =
   (checkFactionNameExists: CheckFactionNameExistsT) =>
   (
     name: FactionName.FactionName
@@ -74,21 +64,13 @@ const toUniqueFactionNameT =
     )
   }
 
-export const toValidFactionName = (
-  checkFactionNameExists: CheckFactionNameExists
-) =>
-  flow(
-    FactionName.parse('name'),
-    E.chainW(toUniqueFactionName(checkFactionNameExists))
-  )
-
 export const toValidFactionNameT = (
   checkFactionNameExists: CheckFactionNameExistsT
 ) =>
   flow(
     FactionName.parse('name'),
     TE.fromEither,
-    TE.chainW(toUniqueFactionNameT(checkFactionNameExists))
+    TE.chainW(toUniqueFactionName(checkFactionNameExists))
   )
 
 export const validateFaction: ValidateFactionT =
