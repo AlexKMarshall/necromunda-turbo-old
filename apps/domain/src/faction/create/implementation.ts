@@ -101,6 +101,16 @@ export const validateFaction: ValidateFaction =
     )
   }
 
+export const validateFactionT: ValidateFactionT =
+  (checkFactionExists) => (unvalidatedFaction) => {
+    return pipe(unvalidatedFaction, ({ name }) =>
+      sequenceS(TE.ApplySeq)({
+        id: pipe(FactionId.create(), TE.right),
+        name: pipe(name, toValidFactionNameT(checkFactionExists)),
+      })
+    )
+  }
+
 type CreateEvents = (validatedFaction: ValidatedFaction) => CreateFactionEvent[]
 
 export const createEvents: CreateEvents = (validatedFaction) => {
