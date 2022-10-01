@@ -150,6 +150,16 @@ importers:
       eslint-config-turbo: 0.0.4_eslint@8.24.0
       eslint-plugin-react: 7.31.8_eslint@8.24.0
 
+  packages/eslint-config-custom-react:
+    specifiers:
+      eslint-config-prettier: 8.5.0
+      eslint-config-turbo: 0.0.4
+      eslint-plugin-react: 7.31.8
+    dependencies:
+      eslint-config-prettier: 8.5.0_eslint@8.24.0
+      eslint-config-turbo: 0.0.4_eslint@8.24.0
+      eslint-plugin-react: 7.31.8_eslint@8.24.0
+
   packages/eslint-config-custom-server:
     specifiers:
       eslint-config-turbo: 0.0.4
@@ -167,7 +177,7 @@ importers:
       '@types/jest': 29.1.1
       '@types/node': 18.7.23
       eslint: 8.24.0
-      eslint-config-custom: workspace:*
+      eslint-config-custom-server: workspace:*
       jest: 29.1.2
       jest-presets: workspace:*
       tsconfig: workspace:*
@@ -176,7 +186,7 @@ importers:
       '@types/jest': 29.1.1
       '@types/node': 18.7.23
       eslint: 8.24.0
-      eslint-config-custom: link:../eslint-config-custom
+      eslint-config-custom-server: link:../eslint-config-custom-server
       jest: 29.1.2_@types+node@18.7.23
       jest-presets: link:../jest-presets
       tsconfig: link:../tsconfig
@@ -191,7 +201,7 @@ importers:
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       eslint: 8.24.0
-      eslint-config-custom: workspace:*
+      eslint-config-custom-react: workspace:*
       jest: 29.1.2
       jest-presets: workspace:*
       react: 18.2.0
@@ -203,7 +213,7 @@ importers:
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       eslint: 8.24.0
-      eslint-config-custom: link:../eslint-config-custom
+      eslint-config-custom-react: link:../eslint-config-custom-react
       jest: 29.1.2
       jest-presets: link:../jest-presets
       react: 18.2.0
@@ -215,7 +225,7 @@ importers:
     specifiers:
       '@types/jest': 29.1.1
       eslint: 8.24.0
-      eslint-config-custom: workspace:*
+      eslint-config-custom-server: workspace:*
       jest: 29.1.2
       jest-presets: workspace:*
       tsconfig: workspace:*
@@ -226,7 +236,7 @@ importers:
     devDependencies:
       '@types/jest': 29.1.1
       eslint: 8.24.0
-      eslint-config-custom: link:../eslint-config-custom
+      eslint-config-custom-server: link:../eslint-config-custom-server
       jest: 29.1.2
       jest-presets: link:../jest-presets
       tsconfig: link:../tsconfig

@@ -12,8 +12,7 @@
     "build": "tsc",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "dev": "tsc -w",
-    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
-    "test": "jest"
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix"
   },
   "jest": {
     "preset": "jest-presets/jest/node"

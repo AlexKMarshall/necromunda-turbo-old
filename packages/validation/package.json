@@ -12,8 +12,7 @@
     "build": "tsc",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "dev": "tsc -w",
-    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
-    "test": "jest"
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +23,7 @@
   "devDependencies": {
     "@types/jest": "29.1.1",
     "eslint": "8.24.0",
-    "eslint-config-custom": "workspace:*",
+    "eslint-config-custom-server": "workspace:*",
     "jest": "29.1.2",
     "jest-presets": "workspace:*",
     "tsconfig": "workspace:*",

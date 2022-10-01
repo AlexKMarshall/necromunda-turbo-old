@@ -2,7 +2,7 @@ import Router from '@koa/router'
 import {
   getFactionCollection,
   postFaction,
-} from 'src/controllers/faction.controller'
+} from './controllers/faction.controller'
 
 export const router = new Router()
 
