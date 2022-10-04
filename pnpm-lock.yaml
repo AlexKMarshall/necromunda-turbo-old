@@ -36,7 +36,7 @@ importers:
       koa-morgan: 1.0.1
       logger: workspace:*
       prisma: 4.4.0
-      supertest: 6.2.4
+      supertest: 6.3.0
       tsconfig: workspace:*
       tsup: 6.2.3
       typescript: 4.8.4
@@ -70,7 +70,7 @@ importers:
       jest: 29.1.2_@types+node@18.7.23
       jest-presets: link:../../packages/jest-presets
       prisma: 4.4.0
-      supertest: 6.2.4
+      supertest: 6.3.0
       tsconfig: link:../../packages/tsconfig
       tsup: 6.2.3_typescript@4.8.4
       typescript: 4.8.4
@@ -5127,8 +5127,8 @@ packages:
       - supports-color
     dev: true
 
-  /supertest/6.2.4:
-    resolution: {integrity: sha512-M8xVnCNv+q2T2WXVzxDECvL2695Uv2uUj2O0utxsld/HRyJvOU8W9f1gvsYxSNU4wmIe0/L/ItnpU4iKq0emDA==}
+  /supertest/6.3.0:
+    resolution: {integrity: sha512-QgWju1cNoacP81Rv88NKkQ4oXTzGg0eNZtOoxp1ROpbS4OHY/eK5b8meShuFtdni161o5X0VQvgo7ErVyKK+Ow==}
     engines: {node: '>=6.4.0'}
     dependencies:
       methods: 1.1.2
