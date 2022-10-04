@@ -1,13 +1,16 @@
 import { Opaque } from 'type-fest'
 
 export const createString =
-  <T>(maxLength: number) =>
+  <T>(fieldName: string) =>
+  (maxLength: number) =>
   (str: string): Opaque<string, T> => {
     if (!str) {
-      throw new Error('Cannot be empty')
+      throw new Error(`${fieldName} cannot be empty`)
     }
     if (str.length > maxLength) {
-      throw new Error(`Cannot be more than ${maxLength} characters`)
+      throw new Error(
+        `${fieldName} cannot be more than ${maxLength} characters`
+      )
     }
     return str as Opaque<string, T>
   }
