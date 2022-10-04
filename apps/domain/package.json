@@ -21,20 +21,20 @@
   "devDependencies": {
     "@types/jest": "29.1.1",
     "@types/node": "18.7.23",
-    "@types/uuid": "^8.3.4",
+    "@types/uuid": "8.3.4",
     "eslint": "8.24.0",
     "eslint-config-custom": "workspace:*",
     "jest": "29.1.2",
     "jest-presets": "workspace:*",
     "tsconfig": "workspace:*",
-    "type-fest": "^3.0.0",
+    "type-fest": "3.0.0",
     "typescript": "4.8.4",
     "vite": "3.1.4",
     "vitest": "0.23.4"
   },
   "dependencies": {
-    "fp-ts": "^2.12.3",
-    "uuid": "^9.0.0",
-    "zod": "^3.19.1"
+    "fp-ts": "2.12.3",
+    "uuid": "9.0.0",
+    "zod": "3.19.1"
   }
 }
