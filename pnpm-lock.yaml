@@ -83,11 +83,9 @@ importers:
       eslint: 8.24.0
       eslint-config-custom: workspace:*
       fp-ts: ^2.12.3
-      fp-ts: ^2.12.3
       jest: 29.1.2
       jest-presets: workspace:*
       tsconfig: workspace:*
-      type-fest: ^3.0.0
       type-fest: ^3.0.0
       typescript: 4.8.4
       uuid: ^9.0.0
@@ -107,7 +105,6 @@ importers:
       jest: 29.1.2_@types+node@18.7.23
       jest-presets: link:../../packages/jest-presets
       tsconfig: link:../../packages/tsconfig
-      type-fest: 3.0.0
       type-fest: 3.0.0
       typescript: 4.8.4
       vite: 3.1.4
@@ -1573,12 +1570,6 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /acorn/7.4.1:
-    resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
   /acorn/8.8.0:
     resolution: {integrity: sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==}
     engines: {node: '>=0.4.0'}
@@ -1812,10 +1803,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       fill-range: 7.0.1
-
-  /browser-process-hrtime/1.0.0:
-    resolution: {integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==}
-    dev: true
 
   /browserslist/4.21.4:
     resolution: {integrity: sha512-CBHJJdDmgjl3daYjN5Cp5kbTf1mUhZoS+beLklHIvkOWscs83YAhLlF3Wsh/lciQYAcbBJgTOD44VtG31ZM4Hw==}
@@ -3991,8 +3978,8 @@ packages:
     dependencies:
       argparse: 2.0.1
 
-  /jsdom/20.0.0:
-    resolution: {integrity: sha512-x4a6CKCgx00uCmP+QakBDFXwjAJ69IkkIWHmtmjd3wvXPcdOS44hfX2vqkOQrVrq8l9DhNNADZRXaCEWvgXtVA==}
+  /jsdom/20.0.1:
+    resolution: {integrity: sha512-pksjj7Rqoa+wdpkKcLzQRHhJCEE42qQhl/xLMUKHgoSejaKOdaXEAnqs6uDNwMl/fciHTzKeR8Wm8cw7N+g98A==}
     engines: {node: '>=14'}
     peerDependencies:
       canvas: ^2.5.0
@@ -5163,8 +5150,8 @@ packages:
       - supports-color
     dev: true
 
-  /supertest/6.2.4:
-    resolution: {integrity: sha512-M8xVnCNv+q2T2WXVzxDECvL2695Uv2uUj2O0utxsld/HRyJvOU8W9f1gvsYxSNU4wmIe0/L/ItnpU4iKq0emDA==}
+  /supertest/6.3.0:
+    resolution: {integrity: sha512-QgWju1cNoacP81Rv88NKkQ4oXTzGg0eNZtOoxp1ROpbS4OHY/eK5b8meShuFtdni161o5X0VQvgo7ErVyKK+Ow==}
     engines: {node: '>=6.4.0'}
     dependencies:
       methods: 1.1.2
@@ -5646,7 +5633,7 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.23.4_jsdom@20.0.0:
+  /vitest/0.23.4_jsdom@20.0.1:
     resolution: {integrity: sha512-iukBNWqQAv8EKDBUNntspLp9SfpaVFbmzmM0sNcnTxASQZMzRw3PsM6DMlsHiI+I6GeO5/sYDg3ecpC+SNFLrQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -5686,12 +5673,6 @@ packages:
       - stylus
       - supports-color
       - terser
-    dev: true
-
-  /w3c-hr-time/1.0.2:
-    resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
-    dependencies:
-      browser-process-hrtime: 1.0.0
     dev: true
 
   /w3c-xmlserializer/3.0.0:
