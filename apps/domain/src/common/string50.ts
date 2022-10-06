@@ -15,3 +15,5 @@ const _tag = (value: ConstrainedString): String50 => {
 export const create = (fieldName: string) => (str: string) => {
   return pipe(str, createString(fieldName)(50), E.map(_tag))
 }
+
+export const value = (str: String50): UnwrapOpaque<String50> => str

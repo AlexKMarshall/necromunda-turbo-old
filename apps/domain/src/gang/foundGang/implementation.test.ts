@@ -6,7 +6,6 @@ import {
 import { describe, it, expect } from 'vitest'
 import * as UUID from '../../common/uuid'
 import { pipe } from 'fp-ts/function'
-import * as E from 'fp-ts/Either'
 import { v4 as uuid } from 'uuid'
 
 describe('toValidFactionId', () => {
