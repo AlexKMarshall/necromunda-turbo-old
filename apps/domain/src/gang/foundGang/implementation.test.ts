@@ -1,27 +1,38 @@
-import { toValidFactionId, validateGang } from './implementation'
+import {
+  FactionDoesNotExistError,
+  toValidFactionId,
+  validateGang,
+} from './implementation'
 import { describe, it, expect } from 'vitest'
 import * as UUID from '../../common/uuid'
+import { pipe } from 'fp-ts/function'
+import * as E from 'fp-ts/Either'
+import { v4 as uuid } from 'uuid'
 
 describe('toValidFactionId', () => {
   it('should return id if it is found', () => {
-    const factionId = UUID.create()
+    const factionId = uuid()
     const checkFactionExists = () => true
 
-    expect(toValidFactionId(checkFactionExists)(factionId)).toBe(factionId)
+    expect(toValidFactionId(checkFactionExists)(factionId)).toStrictEqualRight(
+      factionId
+    )
   })
-  it('should throw if id is not found', () => {
-    const factionId = UUID.create()
+  it('should return error if id is not found', () => {
+    const factionId = uuid()
     const checkFactionExists = () => false
 
-    expect(() =>
-      toValidFactionId(checkFactionExists)(factionId)
-    ).toThrowErrorMatchingInlineSnapshot(`"Invalid factionId: ${factionId}"`)
+    expect(toValidFactionId(checkFactionExists)(factionId)).toEqualLeft(
+      expect.any(FactionDoesNotExistError)
+    )
   })
-  it('should throw if id is not a UUID', () => {
+  it('should return error if id is not a UUID', () => {
     const factionId = 'abc'
     const checkFactionExists = () => false
 
-    expect(() => toValidFactionId(checkFactionExists)(factionId)).toThrowError()
+    expect(toValidFactionId(checkFactionExists)(factionId)).toEqualLeft(
+      expect.any(UUID.InvalidUUIDError)
+    )
   })
 })
 
@@ -29,11 +40,13 @@ describe('validateGang', () => {
   it('should return a valid gang if everything is correct', () => {
     const unvalidatedGang = {
       name: 'Test gang name',
-      factionId: UUID.create(),
+      factionId: uuid(),
     }
     const checkFactionExists = () => true
 
-    expect(validateGang(checkFactionExists)(unvalidatedGang)).toStrictEqual({
+    expect(
+      pipe(unvalidatedGang, validateGang(checkFactionExists))
+    ).toStrictEqualRight({
       name: unvalidatedGang.name,
       factionId: unvalidatedGang.factionId,
       id: expect.any(String),

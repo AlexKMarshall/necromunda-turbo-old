@@ -1,11 +1,34 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Opaque } from 'type-fest'
+import { Opaque, UnwrapOpaque } from 'type-fest'
 import { z } from 'zod'
+import * as E from 'fp-ts/Either'
 
 type URI = 'UUID'
 
-export type UUID<T = URI> = Opaque<string, T>
+export class InvalidUUIDError extends Error {
+  public _tag: 'InvalidUUIDError'
+  private constructor(value: string) {
+    super(`${value} is not a valid UUID`)
+    this._tag = 'InvalidUUIDError'
+  }
 
-export const create = <T = URI>(uuid: string = uuidv4()) => {
-  return z.string().uuid().parse(uuid) as UUID<T>
+  public static of(value: string) {
+    return new InvalidUUIDError(value)
+  }
 }
+
+export type UUID = Opaque<string, URI>
+
+export const parse = (uuid: string = uuidv4()) => {
+  const result = z.string().uuid().safeParse(uuid)
+
+  return result.success
+    ? E.right(result.data as UUID)
+    : E.left(InvalidUUIDError.of(uuid))
+}
+
+export const create = () => {
+  return uuidv4() as UUID
+}
+
+export const value = (uuid: UUID): UnwrapOpaque<UUID> => uuid

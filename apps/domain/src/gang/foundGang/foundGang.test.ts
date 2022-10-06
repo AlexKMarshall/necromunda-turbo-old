@@ -1,16 +1,19 @@
 import { foundGang } from './foundGang'
 import { describe, it, expect } from 'vitest'
 import * as UUID from '../../common/uuid'
+import { v4 as uuid } from 'uuid'
 
 describe('foundGang', () => {
   it('should return a list of events', () => {
     const checkFactionExists = () => true
     const unvalidatedGang = {
       name: 'Test gang name',
-      factionId: UUID.create(),
+      factionId: uuid(),
     }
 
-    expect(foundGang({ checkFactionExists })(unvalidatedGang)).toStrictEqual([
+    expect(
+      foundGang({ checkFactionExists })(unvalidatedGang)
+    ).toStrictEqualRight([
       {
         event: 'gangFounded',
         details: {

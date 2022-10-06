@@ -1,13 +1,17 @@
-import { Opaque } from 'type-fest'
-import { createString } from './constrained'
+import { Opaque, UnwrapOpaque } from 'type-fest'
+import { ConstrainedString, createString } from './constrained'
 import { pipe } from 'fp-ts/function'
+import * as E from 'fp-ts/Either'
 
 type URI = 'String50'
 
-export type String50<T = URI> = Opaque<string, T>
+export type String50 = Opaque<string, URI>
 
-export const create =
-  <T = URI>(fieldName: string) =>
-  (str: string): String50<T> => {
-    return pipe(str, createString<T>(fieldName)(50))
-  }
+const _tag = (value: ConstrainedString): String50 => {
+  const _value: UnwrapOpaque<ConstrainedString> = value
+  return _value as String50
+}
+
+export const create = (fieldName: string) => (str: string) => {
+  return pipe(str, createString(fieldName)(50), E.map(_tag))
+}
