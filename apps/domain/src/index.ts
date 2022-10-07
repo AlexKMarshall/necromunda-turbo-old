@@ -1,2 +1,2 @@
-export * from './gang'
-export * from './faction'
+export * as Gang from './gang'
+export * as Faction from './faction'

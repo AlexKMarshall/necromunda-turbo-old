@@ -7,4 +7,4 @@ const checkFactionNameExists = (name: string) => {
   return pipe(prisma.faction.findFirst({ where: { name } }), Boolean, T.of)
 }
 
-const domainCreateFaction = N.createFaction({ checkFactionNameExists })
+const domainCreateFaction = N.Faction.createFaction({ checkFactionNameExists })
