@@ -14,6 +14,7 @@ importers:
     specifiers:
       '@koa/cors': 3.4.2
       '@koa/router': 12.0.0
+      '@necromunda/domain': workspace:*
       '@prisma/client': 4.4.0
       '@types/body-parser': 1.19.2
       '@types/cors': 2.8.12
@@ -29,6 +30,7 @@ importers:
       '@types/supertest': 2.0.12
       eslint: 8.24.0
       eslint-config-custom-server: workspace:*
+      fp-ts: 2.12.3
       jest: 29.1.2
       jest-presets: workspace:*
       koa: 2.13.4
@@ -45,7 +47,9 @@ importers:
     dependencies:
       '@koa/cors': 3.4.2
       '@koa/router': 12.0.0
+      '@necromunda/domain': link:../domain
       '@prisma/client': 4.4.0_prisma@4.4.0
+      fp-ts: 2.12.3
       koa: 2.13.4
       koa-bodyparser: 4.3.0
       koa-morgan: 1.0.1
