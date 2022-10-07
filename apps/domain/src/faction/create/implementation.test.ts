@@ -1,20 +1,20 @@
 import { describe, it, expect } from 'vitest'
-import { toValidFactionNameT, validateFaction } from './implementation'
+import { toValidFactionNameTE, validateFactionTE } from './implementation'
 import { UnvalidatedFaction } from './types'
-import * as T from 'fp-ts/Task'
+import * as TE from 'fp-ts/TaskEither'
 
 describe('toValidFactionName', () => {
   it('should pass a name that does not exist already', async () => {
-    const checkFactionExists = () => T.of(false)
+    const checkFactionExists = () => TE.right(false)
     const factionName = 'Goliath'
-    const actual = await toValidFactionNameT(checkFactionExists)(factionName)()
+    const actual = await toValidFactionNameTE(checkFactionExists)(factionName)()
     expect(actual).toStrictEqualRight(factionName)
   })
   it('should reject pre-existing faction', async () => {
-    const checkFactionExists = () => T.of(true)
+    const checkFactionExists = () => TE.right(true)
     const factionName = 'Escher'
     expect(
-      await toValidFactionNameT(checkFactionExists)(factionName)()
+      await toValidFactionNameTE(checkFactionExists)(factionName)()
     ).toBeLeft()
   })
 })
@@ -24,9 +24,9 @@ describe('validateFaction', () => {
     const unvalidatedFaction: UnvalidatedFaction = {
       name: 'Orlock',
     }
-    const checkFactionExists = () => T.of(false)
+    const checkFactionExists = () => TE.right(false)
     expect(
-      await validateFaction(checkFactionExists)(unvalidatedFaction)()
+      await validateFactionTE(checkFactionExists)(unvalidatedFaction)()
     ).toStrictEqualRight({
       id: expect.any(String),
       name: unvalidatedFaction.name,

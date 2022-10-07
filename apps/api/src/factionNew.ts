@@ -1,10 +1,30 @@
 import * as N from '@necromunda/domain'
-import { pipe } from 'fp-ts/lib/function'
+import { flow, pipe } from 'fp-ts/lib/function'
 import * as T from 'fp-ts/Task'
 import { prisma } from './prisma'
+import * as TE from 'fp-ts/TaskEither'
+import * as O from 'fp-ts/Option'
 
-const checkFactionNameExists = (name: string) => {
-  return pipe(prisma.faction.findFirst({ where: { name } }), Boolean, T.of)
-}
+const checkFactionNameExistsNew = (name: string) =>
+  pipe(
+    prisma.faction.findFirst({ where: { name } }),
+    (promise) =>
+      TE.tryCatch(
+        () => promise,
+        () => new DBError()
+      ),
+    TE.map(
+      flow(
+        O.fromNullable,
+        O.fold(
+          () => false,
+          () => true
+        )
+      )
+    )
+  )
+class DBError extends Error {}
 
-const domainCreateFaction = N.Faction.createFaction({ checkFactionNameExists })
+const domainCreateFactionTE = N.Faction.createFaction({
+  checkFactionNameExists: checkFactionNameExistsNew,
+})
