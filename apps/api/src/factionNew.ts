@@ -55,7 +55,10 @@ const domainCreateFactionWithPersistance = flow(
 const controllerCreateFactionPipeline = flow(
   domainCreateFactionWithPersistance,
   TE.foldW(
-    () => T.of({ status: 400, body: { message: 'oh no' } }),
+    (error) => {
+      console.error(error)
+      return T.of({ status: 400, body: { message: 'oh no' } })
+    },
     ({ factionCreated }) => T.of({ status: 200, body: factionCreated })
   )
 )
