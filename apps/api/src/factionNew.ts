@@ -3,10 +3,8 @@ import * as N from '@necromunda/domain'
 import { flow, pipe } from 'fp-ts/lib/function'
 import { prisma } from './prisma'
 import * as TE from 'fp-ts/TaskEither'
-import * as O from 'fp-ts/Option'
 import { Context } from 'koa'
 import { ValidatedFaction } from '@necromunda/domain/dist/faction'
-import { boolean } from 'zod'
 
 class DBError extends Error {
   public _tag: 'DBError'
@@ -35,9 +33,9 @@ const findFactionByName = (name: string) =>
 const findFactionById = (id: string) =>
   prisma.faction.findUnique({ where: { id } })
 
-// Raw commands
-const persistFaction = (faction: ValidatedFaction) =>
+const persistFaction = safeDBAccess((faction: ValidatedFaction) =>
   prisma.faction.create({ data: faction })
+)
 
 const checkFactionNameExists = flow(
   safeDBAccess(findFactionByName),
@@ -49,26 +47,16 @@ export const checkFactionIdExists = flow(
   TE.map(Boolean)
 )
 
-// connect persistance to create domain service with all dependencies attached
-const domainCreateFaction = N.Faction.createFaction({
-  checkFactionNameExists,
-})
-
-const domainCreateFactionWithPersistance = flow(
-  domainCreateFaction,
-  TE.chainFirstW(({ factionCreated }) =>
-    safeDBAccess(persistFaction)(factionCreated)
-  )
-)
-
 const controllerCreateFactionPipeline = flow(
-  domainCreateFactionWithPersistance,
+  N.Faction.createFaction({ checkFactionNameExists }),
+  TE.map(({ factionCreated }) => factionCreated),
+  TE.chainFirstW(persistFaction),
   TE.foldW(
     (error) => {
       console.error(error)
       return T.of({ status: 400, body: { message: 'oh no' } })
     },
-    ({ factionCreated }) => T.of({ status: 200, body: factionCreated })
+    (factionCreated) => T.of({ status: 200, body: factionCreated })
   )
 )
 
