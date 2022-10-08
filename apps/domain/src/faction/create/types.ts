@@ -9,6 +9,9 @@ import * as TE from 'fp-ts/TaskEither'
  */
 
 export type CheckFactionNameExists = (name: string) => T.Task<boolean>
+export type CheckFactionNameExistsTE<E = never> = (
+  name: string
+) => TE.TaskEither<E, boolean>
 
 /*
  * Public API
@@ -32,8 +35,16 @@ export type CreateFactionEvent = FactionCreated
 
 export type CreateFactionError = FactionValidationError
 
+export type CreateFactionSuccess = {
+  factionCreated: ValidatedFaction
+  events: CreateFactionEvent[]
+}
+
 export type CreateFactionDependencies = {
   checkFactionNameExists: CheckFactionNameExists
+}
+export type CreateFactionDependenciesTE<E> = {
+  checkFactionNameExists: CheckFactionNameExistsTE<E>
 }
 
 export type CreateFaction = (
@@ -41,3 +52,7 @@ export type CreateFaction = (
 ) => (
   unvalidatedFaction: UnvalidatedFaction
 ) => TE.TaskEither<CreateFactionError, CreateFactionEvent[]>
+
+export type CreateFactionTE<NonDomainError = never> = (
+  unvalidatedFaction: UnvalidatedFaction
+) => TE.TaskEither<CreateFactionError | NonDomainError, CreateFactionSuccess>

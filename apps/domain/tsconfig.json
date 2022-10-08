@@ -3,10 +3,10 @@
     "lib": ["ES2015"],
     "module": "CommonJS",
     "outDir": "./dist",
-    "rootDir": ".",
+    "rootDir": "./src",
     "baseUrl": "."
   },
   "exclude": ["node_modules", "dist", "build", ".build"],
   "extends": "tsconfig/base.json",
-  "include": ["."]
+  "include": ["./src"]
 }
