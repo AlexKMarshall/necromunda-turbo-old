@@ -10,11 +10,7 @@ import { Context } from 'koa'
 const checkFactionNameExistsNew = (name: string) =>
   pipe(
     prisma.faction.findFirst({ where: { name } }),
-    (promise) =>
-      TE.tryCatch(
-        () => promise,
-        () => new DBError()
-      ),
+    (promise) => TE.tryCatch(() => promise, DBError.of),
     TE.map(
       flow(
         O.fromNullable,
@@ -25,7 +21,20 @@ const checkFactionNameExistsNew = (name: string) =>
       )
     )
   )
-class DBError extends Error {}
+class DBError extends Error {
+  public _tag: 'DBError'
+  public innerError?: unknown
+
+  private constructor(innerError?: unknown) {
+    super('Unexpected database error')
+    this.innerError = innerError
+    this._tag = 'DBError'
+  }
+
+  public static of(innerError?: unknown) {
+    return new DBError(innerError)
+  }
+}
 
 // connect persistance to create domain service with all dependencies attached
 const domainCreateFaction = N.Faction.createFaction({
@@ -33,17 +42,14 @@ const domainCreateFaction = N.Faction.createFaction({
 })
 
 const saveFaction = flow(
-  TE.tryCatchK(
-    async (faction: N.Faction.ValidatedFaction) => {
-      await prisma.faction.create({ data: faction })
-    },
-    () => new DBError()
-  )
+  TE.tryCatchK(async (faction: N.Faction.ValidatedFaction) => {
+    await prisma.faction.create({ data: faction })
+  }, DBError.of)
 )
 
 const domainCreateFactionWithPersistance = flow(
   domainCreateFaction,
-  TE.chainFirst(({ factionCreated }) => saveFaction(factionCreated))
+  TE.chainFirstW(({ factionCreated }) => saveFaction(factionCreated))
 )
 
 const controllerCreateFactionPipeline = flow(
