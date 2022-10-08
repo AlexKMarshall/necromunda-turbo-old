@@ -5,33 +5,23 @@ import { prisma } from './prisma'
 import * as TE from 'fp-ts/TaskEither'
 import { Context } from 'koa'
 import { ValidatedFaction } from '@necromunda/domain/dist/faction'
-import { DBError } from './infrastructure/errors'
+import { safeDBAccess } from './infrastructure/db-utils'
 
-type DBFunction<A extends readonly unknown[], B> = (...a: A) => Promise<B>
-
-const safeDBAccess = <A extends readonly unknown[], B>(f: DBFunction<A, B>) =>
-  TE.tryCatchK(f, DBError.of)
-
-// Raw queries
-const findFactionByName = (name: string) =>
+const findFactionByName = safeDBAccess((name: string) =>
   prisma.faction.findUnique({ where: { name } })
+)
 
-const findFactionById = (id: string) =>
+const findFactionById = safeDBAccess((id: string) =>
   prisma.faction.findUnique({ where: { id } })
+)
 
 const persistFaction = safeDBAccess((faction: ValidatedFaction) =>
   prisma.faction.create({ data: faction })
 )
 
-const checkFactionNameExists = flow(
-  safeDBAccess(findFactionByName),
-  TE.map(Boolean)
-)
+const checkFactionNameExists = flow(findFactionByName, TE.map(Boolean))
 
-export const checkFactionIdExists = flow(
-  safeDBAccess(findFactionById),
-  TE.map(Boolean)
-)
+export const checkFactionIdExists = flow(findFactionById, TE.map(Boolean))
 
 const controllerCreateFactionPipeline = flow(
   N.Faction.createFaction({ checkFactionNameExists }),
