@@ -5,22 +5,9 @@ import { prisma } from './prisma'
 import * as TE from 'fp-ts/TaskEither'
 import * as O from 'fp-ts/Option'
 import { Context } from 'koa'
+import { ValidatedFaction } from '@necromunda/domain/dist/faction'
+import { boolean } from 'zod'
 
-// repository infrastructure
-const checkFactionNameExistsNew = (name: string) =>
-  pipe(
-    prisma.faction.findFirst({ where: { name } }),
-    (promise) => TE.tryCatch(() => promise, DBError.of),
-    TE.map(
-      flow(
-        O.fromNullable,
-        O.fold(
-          () => false,
-          () => true
-        )
-      )
-    )
-  )
 class DBError extends Error {
   public _tag: 'DBError'
   public innerError?: unknown
@@ -36,20 +23,42 @@ class DBError extends Error {
   }
 }
 
+type DBFunction<A extends readonly unknown[], B> = (...a: A) => Promise<B>
+
+const safeDBAccess = <A extends readonly unknown[], B>(f: DBFunction<A, B>) =>
+  TE.tryCatchK(f, DBError.of)
+
+// Raw queries
+const findFactionByName = (name: string) =>
+  prisma.faction.findUnique({ where: { name } })
+
+const findFactionById = (id: string) =>
+  prisma.faction.findUnique({ where: { id } })
+
+// Raw commands
+const persistFaction = (faction: ValidatedFaction) =>
+  prisma.faction.create({ data: faction })
+
+const checkFactionNameExists = flow(
+  safeDBAccess(findFactionByName),
+  TE.map(Boolean)
+)
+
+export const checkFactionIdExists = flow(
+  safeDBAccess(findFactionById),
+  TE.map(Boolean)
+)
+
 // connect persistance to create domain service with all dependencies attached
 const domainCreateFaction = N.Faction.createFaction({
-  checkFactionNameExists: checkFactionNameExistsNew,
+  checkFactionNameExists,
 })
-
-const saveFaction = flow(
-  TE.tryCatchK(async (faction: N.Faction.ValidatedFaction) => {
-    await prisma.faction.create({ data: faction })
-  }, DBError.of)
-)
 
 const domainCreateFactionWithPersistance = flow(
   domainCreateFaction,
-  TE.chainFirstW(({ factionCreated }) => saveFaction(factionCreated))
+  TE.chainFirstW(({ factionCreated }) =>
+    safeDBAccess(persistFaction)(factionCreated)
+  )
 )
 
 const controllerCreateFactionPipeline = flow(
