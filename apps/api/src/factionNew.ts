@@ -1,11 +1,10 @@
-import * as IO from 'fp-ts/IO'
 import * as T from 'fp-ts/Task'
 import * as N from '@necromunda/domain'
 import { flow, pipe } from 'fp-ts/lib/function'
 import { prisma } from './prisma'
 import * as TE from 'fp-ts/TaskEither'
 import * as O from 'fp-ts/Option'
-import { Context, Request } from 'koa'
+import { Context } from 'koa'
 
 // repository infrastructure
 const checkFactionNameExistsNew = (name: string) =>
@@ -33,16 +32,25 @@ const domainCreateFaction = N.Faction.createFaction({
   checkFactionNameExists: checkFactionNameExistsNew,
 })
 
-type Response = {
-  status: number
-  message: string
-}
+const saveFaction = flow(
+  TE.tryCatchK(
+    async (faction: N.Faction.ValidatedFaction) => {
+      await prisma.faction.create({ data: faction })
+    },
+    () => new DBError()
+  )
+)
+
+const domainCreateFactionWithPersistance = flow(
+  domainCreateFaction,
+  TE.chainFirst(({ factionCreated }) => saveFaction(factionCreated))
+)
 
 const controllerCreateFactionPipeline = flow(
-  domainCreateFaction,
-  TE.fold(
-    () => T.of({ status: 500, message: 'Oh no' }),
-    () => T.of({ status: 200, message: 'Faction created' })
+  domainCreateFactionWithPersistance,
+  TE.foldW(
+    () => T.of({ status: 400, body: { message: 'oh no' } }),
+    ({ factionCreated }) => T.of({ status: 200, body: factionCreated })
   )
 )
 
@@ -51,9 +59,9 @@ export const createFactionController: Controller = (ctx) => {
   return pipe(
     ctx.request.body as any,
     controllerCreateFactionPipeline,
-    T.map(({ status, message }) => {
+    T.map(({ status, body }) => {
       ctx.status = status
-      ctx.body = { message }
+      ctx.body = body
     })
   )
 }

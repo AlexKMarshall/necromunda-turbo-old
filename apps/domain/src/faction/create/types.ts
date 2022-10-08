@@ -35,6 +35,11 @@ export type CreateFactionEvent = FactionCreated
 
 export type CreateFactionError = FactionValidationError
 
+export type CreateFactionSuccess = {
+  factionCreated: ValidatedFaction
+  events: CreateFactionEvent[]
+}
+
 export type CreateFactionDependencies = {
   checkFactionNameExists: CheckFactionNameExists
 }
@@ -50,4 +55,4 @@ export type CreateFaction = (
 
 export type CreateFactionTE<NonDomainError = never> = (
   unvalidatedFaction: UnvalidatedFaction
-) => TE.TaskEither<CreateFactionError | NonDomainError, CreateFactionEvent[]>
+) => TE.TaskEither<CreateFactionError | NonDomainError, CreateFactionSuccess>

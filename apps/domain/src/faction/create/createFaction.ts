@@ -11,6 +11,9 @@ export const createFaction =
     return pipe(
       unvalidatedFaction,
       validateFactionTE(checkFactionNameExists),
-      TE.map(createEvents)
+      TE.map((validatedFaction) => ({
+        factionCreated: validatedFaction,
+        events: createEvents(validatedFaction),
+      }))
     )
   }

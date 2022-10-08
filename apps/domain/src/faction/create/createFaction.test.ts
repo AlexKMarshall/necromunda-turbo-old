@@ -12,11 +12,14 @@ describe('createFaction', () => {
 
     expect(
       await createFaction({ checkFactionNameExists })(unvalidatedFaction)()
-    ).toStrictEqualRight([
-      {
-        event: 'factionCreated',
-        details: { id: expect.any(String), name: unvalidatedFaction.name },
-      },
-    ])
+    ).toStrictEqualRight({
+      factionCreated: { id: expect.any(String), name: unvalidatedFaction.name },
+      events: [
+        {
+          event: 'factionCreated',
+          details: { id: expect.any(String), name: unvalidatedFaction.name },
+        },
+      ],
+    })
   })
 })
