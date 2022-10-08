@@ -5,21 +5,7 @@ import { prisma } from './prisma'
 import * as TE from 'fp-ts/TaskEither'
 import { Context } from 'koa'
 import { ValidatedFaction } from '@necromunda/domain/dist/faction'
-
-class DBError extends Error {
-  public _tag: 'DBError'
-  public innerError?: unknown
-
-  private constructor(innerError?: unknown) {
-    super('Unexpected database error')
-    this.innerError = innerError
-    this._tag = 'DBError'
-  }
-
-  public static of(innerError?: unknown) {
-    return new DBError(innerError)
-  }
-}
+import { DBError } from './infrastructure/errors'
 
 type DBFunction<A extends readonly unknown[], B> = (...a: A) => Promise<B>
 
