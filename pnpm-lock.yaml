@@ -12,7 +12,7 @@ importers:
 
   apps/api:
     specifiers:
-      '@koa/cors': 3.4.3
+      '@koa/cors': 4.0.0
       '@koa/router': 12.0.0
       '@necromunda/domain': workspace:*
       '@prisma/client': 4.4.0
@@ -45,7 +45,7 @@ importers:
       validation: workspace:*
       zod: 3.19.1
     dependencies:
-      '@koa/cors': 3.4.3
+      '@koa/cors': 4.0.0
       '@koa/router': 12.0.0
       '@necromunda/domain': link:../domain
       '@prisma/client': 4.4.0_prisma@4.4.0
@@ -962,9 +962,9 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@koa/cors/3.4.3:
-    resolution: {integrity: sha512-WPXQUaAeAMVaLTEFpoq3T2O1C+FstkjJnDQqy95Ck1UdILajsRhu6mhJ8H2f4NFPRBoCNN+qywTJfq/gGki5mw==}
-    engines: {node: '>= 8.0.0'}
+  /@koa/cors/4.0.0:
+    resolution: {integrity: sha512-Y4RrbvGTlAaa04DBoPBWJqDR5gPj32OOz827ULXfgB1F7piD1MB/zwn8JR2LAnvdILhxUbXbkXGWuNVsFuVFCQ==}
+    engines: {node: '>= 14.0.0'}
     dependencies:
       vary: 1.1.2
     dev: false
