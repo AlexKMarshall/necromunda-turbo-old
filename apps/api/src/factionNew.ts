@@ -3,63 +3,36 @@ import * as N from '@necromunda/domain'
 import { flow, pipe } from 'fp-ts/lib/function'
 import { prisma } from './prisma'
 import * as TE from 'fp-ts/TaskEither'
-import * as O from 'fp-ts/Option'
 import { Context } from 'koa'
+import { ValidatedFaction } from '@necromunda/domain/dist/faction'
+import { safeDBAccess } from './infrastructure/db-utils'
 
-// repository infrastructure
-const checkFactionNameExistsNew = (name: string) =>
-  pipe(
-    prisma.faction.findFirst({ where: { name } }),
-    (promise) => TE.tryCatch(() => promise, DBError.of),
-    TE.map(
-      flow(
-        O.fromNullable,
-        O.fold(
-          () => false,
-          () => true
-        )
-      )
-    )
-  )
-class DBError extends Error {
-  public _tag: 'DBError'
-  public innerError?: unknown
-
-  private constructor(innerError?: unknown) {
-    super('Unexpected database error')
-    this.innerError = innerError
-    this._tag = 'DBError'
-  }
-
-  public static of(innerError?: unknown) {
-    return new DBError(innerError)
-  }
-}
-
-// connect persistance to create domain service with all dependencies attached
-const domainCreateFaction = N.Faction.createFaction({
-  checkFactionNameExists: checkFactionNameExistsNew,
-})
-
-const saveFaction = flow(
-  TE.tryCatchK(async (faction: N.Faction.ValidatedFaction) => {
-    await prisma.faction.create({ data: faction })
-  }, DBError.of)
+const findFactionByName = safeDBAccess((name: string) =>
+  prisma.faction.findUnique({ where: { name } })
 )
 
-const domainCreateFactionWithPersistance = flow(
-  domainCreateFaction,
-  TE.chainFirstW(({ factionCreated }) => saveFaction(factionCreated))
+const findFactionById = safeDBAccess((id: string) =>
+  prisma.faction.findUnique({ where: { id } })
 )
+
+const persistFaction = safeDBAccess((faction: ValidatedFaction) =>
+  prisma.faction.create({ data: faction })
+)
+
+const checkFactionNameExists = flow(findFactionByName, TE.map(Boolean))
+
+export const checkFactionIdExists = flow(findFactionById, TE.map(Boolean))
 
 const controllerCreateFactionPipeline = flow(
-  domainCreateFactionWithPersistance,
+  N.Faction.createFaction({ checkFactionNameExists }),
+  TE.map(({ factionCreated }) => factionCreated),
+  TE.chainFirstW(persistFaction),
   TE.foldW(
     (error) => {
       console.error(error)
       return T.of({ status: 400, body: { message: 'oh no' } })
     },
-    ({ factionCreated }) => T.of({ status: 200, body: factionCreated })
+    (factionCreated) => T.of({ status: 200, body: factionCreated })
   )
 )
 
