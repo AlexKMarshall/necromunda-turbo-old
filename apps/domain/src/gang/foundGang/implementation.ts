@@ -1,23 +1,32 @@
 import { create as createGangId } from './gangId'
-import { FactionId, parse as createFactionId } from './factionId'
+import { FactionId, parse as parseFactionId } from './factionId'
 import { create as createString50 } from '../../common/string50'
-import { pipe } from 'fp-ts/function'
+import { flow, pipe } from 'fp-ts/function'
 import { sequenceS } from 'fp-ts/lib/Apply'
 import * as E from 'fp-ts/Either'
+import * as TE from 'fp-ts/TaskEither'
 import {
   CheckFactionExists,
   UnvalidatedGang,
   ValidatedGang,
   FoundGangEvent,
+  CheckFactionIDExistsTE,
 } from './types'
 import { InvalidUUIDError } from '../../common/uuid'
 import { ConstrainedStringError } from '../../common/constrained'
+import { A } from 'vitest/dist/global-6d79484b'
+import { boolean } from 'zod'
 
 type ValidateGang = (
   checkFactionExists: CheckFactionExists
 ) => (
   unvalidatedGang: UnvalidatedGang
 ) => E.Either<GangValidationError, ValidatedGang>
+
+type ValidateGangTE<NonDomainError = never> = (
+  unvalidatedGang: UnvalidatedGang
+) => TE.TaskEither<GangValidationError | NonDomainError, ValidatedGang>
+
 type CreateEvents = (validatedGang: ValidatedGang) => FoundGangEvent[]
 
 export class FactionDoesNotExistError extends Error {
@@ -45,7 +54,29 @@ export const toValidFactionId =
       return E.left(FactionDoesNotExistError.of(factionId))
     }
 
-    return pipe(factionId, createFactionId, E.chainW(checkFaction))
+    return pipe(factionId, parseFactionId, E.chainW(checkFaction))
+  }
+
+export const toValidFactionIdTE =
+  <E = never>(checkFactionIdExists: CheckFactionIDExistsTE<E>) =>
+  (factionId: string) => {
+    const _checkFactionIdExists = (factionId: FactionId) =>
+      pipe(
+        factionId,
+        checkFactionIdExists,
+        TE.chainW((exists) =>
+          exists
+            ? TE.right(factionId)
+            : TE.left(FactionDoesNotExistError.of(factionId))
+        )
+      )
+
+    return pipe(
+      factionId,
+      parseFactionId,
+      TE.fromEither,
+      TE.chainW(_checkFactionIdExists)
+    )
   }
 
 export const validateGang: ValidateGang =

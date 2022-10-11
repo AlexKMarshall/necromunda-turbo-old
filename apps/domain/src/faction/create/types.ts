@@ -1,6 +1,5 @@
 import { FactionId } from './factionId'
 import { FactionValidationError, UniqueFactionName } from './implementation'
-import * as E from 'fp-ts/Either'
 import * as T from 'fp-ts/Task'
 import * as TE from 'fp-ts/TaskEither'
 
@@ -8,7 +7,6 @@ import * as TE from 'fp-ts/TaskEither'
  * External dependencies / DB Functions
  */
 
-export type CheckFactionNameExists = (name: string) => T.Task<boolean>
 export type CheckFactionNameExistsTE<E = never> = (
   name: string
 ) => TE.TaskEither<E, boolean>
@@ -40,18 +38,9 @@ export type CreateFactionSuccess = {
   events: CreateFactionEvent[]
 }
 
-export type CreateFactionDependencies = {
-  checkFactionNameExists: CheckFactionNameExists
-}
 export type CreateFactionDependenciesTE<E> = {
   checkFactionNameExists: CheckFactionNameExistsTE<E>
 }
-
-export type CreateFaction = (
-  dependencies: CreateFactionDependencies
-) => (
-  unvalidatedFaction: UnvalidatedFaction
-) => TE.TaskEither<CreateFactionError, CreateFactionEvent[]>
 
 export type CreateFactionTE<NonDomainError = never> = (
   unvalidatedFaction: UnvalidatedFaction

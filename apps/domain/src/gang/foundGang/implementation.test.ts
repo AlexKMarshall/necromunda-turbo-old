@@ -1,6 +1,8 @@
+import * as TE from 'fp-ts/TaskEither'
 import {
   FactionDoesNotExistError,
   toValidFactionId,
+  toValidFactionIdTE,
   validateGang,
 } from './implementation'
 import { describe, it, expect } from 'vitest'
@@ -32,6 +34,33 @@ describe('toValidFactionId', () => {
     expect(toValidFactionId(checkFactionExists)(factionId)).toEqualLeft(
       expect.any(UUID.InvalidUUIDError)
     )
+  })
+})
+
+describe('toValidFactionIdTE', () => {
+  it('should return id if it is found', async () => {
+    const factionId = uuid()
+    const checkFactionExists = () => TE.right(true)
+
+    expect(
+      await toValidFactionIdTE(checkFactionExists)(factionId)()
+    ).toStrictEqualRight(factionId)
+  })
+  it('should return error if id is not found', async () => {
+    const factionId = uuid()
+    const checkFactionExists = () => TE.right(false)
+
+    expect(
+      await toValidFactionIdTE(checkFactionExists)(factionId)()
+    ).toEqualLeft(expect.any(FactionDoesNotExistError))
+  })
+  it('should return error if id is not a UUID', async () => {
+    const factionId = 'abc'
+    const checkFactionExists = () => TE.right(false)
+
+    expect(
+      await toValidFactionIdTE(checkFactionExists)(factionId)()
+    ).toEqualLeft(expect.any(UUID.InvalidUUIDError))
   })
 })
 
