@@ -14,8 +14,6 @@ import {
 } from './types'
 import { InvalidUUIDError } from '../../common/uuid'
 import { ConstrainedStringError } from '../../common/constrained'
-import { A } from 'vitest/dist/global-6d79484b'
-import { boolean } from 'zod'
 
 type ValidateGang = (
   checkFactionExists: CheckFactionExists
