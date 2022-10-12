@@ -1,4 +1,4 @@
-import * as UUID from '../../common/uuid'
+import * as UUID from '../../common/uuid-old'
 import * as E from 'fp-ts/Either'
 import { Opaque, UnwrapOpaque } from 'type-fest'
 import { pipe } from 'fp-ts/lib/function'

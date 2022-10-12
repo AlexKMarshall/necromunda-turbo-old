@@ -1,6 +1,6 @@
 import { foundGang } from './foundGang'
 import { describe, it, expect } from 'vitest'
-import * as UUID from '../../common/uuid'
+import * as UUID from '../../common/uuid-old'
 import { v4 as uuid } from 'uuid'
 
 describe('foundGang', () => {

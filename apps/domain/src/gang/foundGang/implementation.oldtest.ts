@@ -6,7 +6,7 @@ import {
   validateGang,
 } from './implementation'
 import { describe, it, expect } from 'vitest'
-import * as UUID from '../../common/uuid'
+import * as UUID from '../../common/uuid-old'
 import { pipe } from 'fp-ts/function'
 import { v4 as uuid } from 'uuid'
 

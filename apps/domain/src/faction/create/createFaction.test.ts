@@ -3,7 +3,7 @@ import { createFaction } from './createFaction'
 import { UnvalidatedFaction } from './types'
 import * as TE from 'fp-ts/TaskEither'
 
-describe('createFaction', () => {
+describe.skip('createFaction', () => {
   it('should return a list of events', async () => {
     const checkFactionNameExists = () => TE.right(false)
     const unvalidatedFaction: UnvalidatedFaction = {

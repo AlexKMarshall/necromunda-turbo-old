@@ -12,7 +12,7 @@ import {
   FoundGangEvent,
   CheckFactionIDExistsTE,
 } from './types'
-import { InvalidUUIDError } from '../../common/uuid'
+import { InvalidUUIDError } from '../../common/uuid-old'
 import { ConstrainedStringError } from '../../common/constrained'
 
 type ValidateGang = (
