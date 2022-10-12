@@ -1,6 +1,6 @@
 import { flow, pipe } from 'fp-ts/lib/function'
 import { Opaque, UnwrapOpaque } from 'type-fest'
-import * as String50 from '../../common/string50'
+import * as String50 from '../../common/deprecated/string50-old'
 import * as E from 'fp-ts/Either'
 
 export type FactionName = Opaque<string, 'FactionName'>

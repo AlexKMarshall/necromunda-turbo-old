@@ -1,6 +1,6 @@
 import { create as createGangId } from './gangId'
 import { FactionId, parse as parseFactionId } from './factionId'
-import { create as createString50 } from '../../common/string50'
+import { create as createString50 } from '../../common/deprecated/string50-old'
 import { flow, pipe } from 'fp-ts/function'
 import { sequenceS } from 'fp-ts/lib/Apply'
 import * as E from 'fp-ts/Either'
@@ -13,7 +13,7 @@ import {
   CheckFactionIDExistsTE,
 } from './types'
 import { InvalidUUIDError } from '../../common/uuid-old'
-import { ConstrainedStringError } from '../../common/constrained'
+import { ConstrainedStringError } from '../../common/constrained-old'
 
 type ValidateGang = (
   checkFactionExists: CheckFactionExists

@@ -1,6 +1,6 @@
 import { FactionId } from './factionId'
 import { GangId } from './gangId'
-import { String50 } from '../../common/string50'
+import { String50 } from '../../common/deprecated/string50-old'
 import { GangValidationError } from './implementation'
 import * as E from 'fp-ts/Either'
 import * as TE from 'fp-ts/TaskEither'

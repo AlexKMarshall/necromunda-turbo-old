@@ -1,5 +1,5 @@
 import { Opaque, UnwrapOpaque } from 'type-fest'
-import { ConstrainedString, createString } from './constrained'
+import { ConstrainedString, createString } from './constrained-old'
 import { pipe } from 'fp-ts/function'
 import * as E from 'fp-ts/Either'
 
