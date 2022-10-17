@@ -1,10 +1,6 @@
 import { flow, pipe } from 'fp-ts/lib/function'
 import * as FactionId from './factionId'
-import {
-  // UnvalidatedFaction,
-  CreateFactionEvent,
-  // CheckFactionNameExistsTE,
-} from './types'
+import { CreateFactionEvent } from './types'
 import * as E from 'fp-ts/Either'
 import * as TE from 'fp-ts/TaskEither'
 import * as D from 'io-ts/Decoder'
@@ -21,7 +17,7 @@ const FactionDecoder = D.struct({
 
 type FactionDecoded = D.TypeOf<typeof FactionDecoder>
 
-type FactionName = FactionDecoded['name']
+export type FactionName = FactionDecoded['name']
 
 export type CheckFactionNameExistsTE<NonDomainError> = (
   name: FactionName
@@ -42,7 +38,7 @@ const toUniqueFactionName =
     return pipe(
       name,
       TE.right,
-      TE.chainFirstW(
+      TE.chainFirst(
         flow(
           checkFactionNameExists,
           TE.filterOrElseW(
@@ -64,8 +60,8 @@ export const validateFaction =
   <E>(checkFactionNameExists: CheckFactionNameExistsTE<E>) =>
   (
     faction: UnvalidatedFaction
-  ): TE.TaskEither<E | FactionValidationError, ValidatedFaction> => {
-    return pipe(
+  ): TE.TaskEither<E | FactionValidationError, ValidatedFaction> =>
+    pipe(
       faction,
       FactionDecoder.decode,
       E.mapLeft(FactionDecodingError.of),
@@ -80,7 +76,6 @@ export const validateFaction =
         )
       )
     )
-  }
 
 export type FactionValidationError =
   | FactionDecodingError

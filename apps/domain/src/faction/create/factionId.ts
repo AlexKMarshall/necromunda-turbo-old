@@ -13,6 +13,4 @@ export const FactionId: D.Decoder<unknown, FactionId> = pipe(
   D.refine((s): s is FactionId => true, 'FactionId')
 )
 
-const _tag = (factionId: UUID): FactionId => factionId as FactionId
-
 export const generate: () => FactionId = () => generateUUID() as FactionId

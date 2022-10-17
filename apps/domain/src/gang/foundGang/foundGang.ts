@@ -1,12 +1,19 @@
 import { pipe } from 'fp-ts/function'
-import { FoundGang } from './types'
-import { validateGang, createEvents } from './implementation'
-import * as E from 'fp-ts/Either'
+import {
+  FoundGangDependencies,
+  FoundGangError,
+  FoundGangSuccess,
+} from './types'
+import { UnvalidatedGang, validateGang } from './implementation'
+import * as TE from 'fp-ts/TaskEither'
 
-export const foundGang: FoundGang =
-  ({ checkFactionExists }) =>
-  (unvalidatedGang) => {
-    const _validateGang = validateGang(checkFactionExists)
-
-    return pipe(unvalidatedGang, _validateGang, E.map(createEvents))
-  }
+export const foundGang =
+  <E>({ checkFactionIdExists }: FoundGangDependencies<E>) =>
+  (
+    unvalidatedGang: UnvalidatedGang
+  ): TE.TaskEither<E | FoundGangError, FoundGangSuccess> =>
+    pipe(
+      unvalidatedGang,
+      validateGang(checkFactionIdExists),
+      TE.map((validatedGang) => ({ gangFounded: validatedGang }))
+    )
