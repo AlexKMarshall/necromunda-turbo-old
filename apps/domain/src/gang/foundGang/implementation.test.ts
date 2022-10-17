@@ -1,83 +1,46 @@
+import { describe, test, expect } from 'vitest'
 import * as TE from 'fp-ts/TaskEither'
-import {
-  FactionDoesNotExistError,
-  toValidFactionId,
-  toValidFactionIdTE,
-  validateGang,
-} from './implementation'
-import { describe, it, expect } from 'vitest'
-import * as UUID from '../../common/uuid'
-import { pipe } from 'fp-ts/function'
-import { v4 as uuid } from 'uuid'
-
-describe('toValidFactionId', () => {
-  it('should return id if it is found', () => {
-    const factionId = uuid()
-    const checkFactionExists = () => true
-
-    expect(toValidFactionId(checkFactionExists)(factionId)).toStrictEqualRight(
-      factionId
-    )
-  })
-  it('should return error if id is not found', () => {
-    const factionId = uuid()
-    const checkFactionExists = () => false
-
-    expect(toValidFactionId(checkFactionExists)(factionId)).toEqualLeft(
-      expect.any(FactionDoesNotExistError)
-    )
-  })
-  it('should return error if id is not a UUID', () => {
-    const factionId = 'abc'
-    const checkFactionExists = () => false
-
-    expect(toValidFactionId(checkFactionExists)(factionId)).toEqualLeft(
-      expect.any(UUID.InvalidUUIDError)
-    )
-  })
-})
-
-describe('toValidFactionIdTE', () => {
-  it('should return id if it is found', async () => {
-    const factionId = uuid()
-    const checkFactionExists = () => TE.right(true)
-
-    expect(
-      await toValidFactionIdTE(checkFactionExists)(factionId)()
-    ).toStrictEqualRight(factionId)
-  })
-  it('should return error if id is not found', async () => {
-    const factionId = uuid()
-    const checkFactionExists = () => TE.right(false)
-
-    expect(
-      await toValidFactionIdTE(checkFactionExists)(factionId)()
-    ).toEqualLeft(expect.any(FactionDoesNotExistError))
-  })
-  it('should return error if id is not a UUID', async () => {
-    const factionId = 'abc'
-    const checkFactionExists = () => TE.right(false)
-
-    expect(
-      await toValidFactionIdTE(checkFactionExists)(factionId)()
-    ).toEqualLeft(expect.any(UUID.InvalidUUIDError))
-  })
-})
+import { v4 as uuidV4 } from 'uuid'
+import { validateGang } from './implementation'
+import { FactionDoesNotExistError, GangDecodingError } from './errors'
 
 describe('validateGang', () => {
-  it('should return a valid gang if everything is correct', () => {
-    const unvalidatedGang = {
-      name: 'Test gang name',
-      factionId: uuid(),
+  test('valid gang', async () => {
+    const validInput = {
+      name: 'My gang',
+      factionId: uuidV4(),
     }
-    const checkFactionExists = () => true
+    const mockCheckFactionIdExists = () => TE.right(true)
 
     expect(
-      pipe(unvalidatedGang, validateGang(checkFactionExists))
+      await validateGang(mockCheckFactionIdExists)(validInput)()
     ).toStrictEqualRight({
-      name: unvalidatedGang.name,
-      factionId: unvalidatedGang.factionId,
       id: expect.any(String),
+      factionId: validInput.factionId,
+      name: validInput.name,
     })
+  })
+
+  test('invalid format', async () => {
+    const missingName = {
+      factionId: uuidV4(),
+    } as any
+    const mockCheckFactionIdExists = () => TE.right(true)
+
+    expect(
+      await validateGang(mockCheckFactionIdExists)(missingName)()
+    ).toStrictEqualLeft(expect.any(GangDecodingError))
+  })
+
+  test('faction id does not exist', async () => {
+    const validInput = {
+      name: 'My gang',
+      factionId: uuidV4(),
+    }
+    const mockCheckFactionIdExists = () => TE.right(false)
+
+    expect(
+      await validateGang(mockCheckFactionIdExists)(validInput)()
+    ).toStrictEqualLeft(expect.any(FactionDoesNotExistError))
   })
 })

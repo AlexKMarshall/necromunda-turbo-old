@@ -1,6 +1,9 @@
-import { FactionId } from './factionId'
-import { FactionValidationError, UniqueFactionName } from './implementation'
-import * as T from 'fp-ts/Task'
+import {
+  FactionValidationError,
+  ValidatedFaction,
+  FactionName,
+  UnvalidatedFaction,
+} from './implementation'
 import * as TE from 'fp-ts/TaskEither'
 
 /*
@@ -8,21 +11,14 @@ import * as TE from 'fp-ts/TaskEither'
  */
 
 export type CheckFactionNameExistsTE<E = never> = (
-  name: string
+  name: FactionName
 ) => TE.TaskEither<E, boolean>
 
 /*
  * Public API
  */
 
-export type UnvalidatedFaction = {
-  name: string
-}
-
-export type ValidatedFaction = {
-  name: UniqueFactionName
-  id: FactionId
-}
+export type { ValidatedFaction, UnvalidatedFaction }
 
 export type FactionCreated = {
   event: 'factionCreated'

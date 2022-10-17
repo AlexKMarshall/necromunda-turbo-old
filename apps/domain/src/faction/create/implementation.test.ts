@@ -1,35 +1,30 @@
-import { describe, it, expect } from 'vitest'
-import { toValidFactionNameTE, validateFactionTE } from './implementation'
-import { UnvalidatedFaction } from './types'
+import { describe, test, expect } from 'vitest'
 import * as TE from 'fp-ts/TaskEither'
-
-describe('toValidFactionName', () => {
-  it('should pass a name that does not exist already', async () => {
-    const checkFactionExists = () => TE.right(false)
-    const factionName = 'Goliath'
-    const actual = await toValidFactionNameTE(checkFactionExists)(factionName)()
-    expect(actual).toStrictEqualRight(factionName)
-  })
-  it('should reject pre-existing faction', async () => {
-    const checkFactionExists = () => TE.right(true)
-    const factionName = 'Escher'
-    expect(
-      await toValidFactionNameTE(checkFactionExists)(factionName)()
-    ).toBeLeft()
-  })
-})
+import { validateFaction } from './implementation'
+import { FactionDecodingError, FactionNameAlreadyExistsError } from './errors'
 
 describe('validateFaction', () => {
-  it('should pass a valid faction', async () => {
-    const unvalidatedFaction: UnvalidatedFaction = {
-      name: 'Orlock',
-    }
-    const checkFactionExists = () => TE.right(false)
+  test('valid faction', async () => {
+    const validInput = { name: 'Goliath' }
+    const mockCheckFactionNameExists = () => TE.right(false)
     expect(
-      await validateFactionTE(checkFactionExists)(unvalidatedFaction)()
-    ).toStrictEqualRight({
-      id: expect.any(String),
-      name: unvalidatedFaction.name,
-    })
+      await validateFaction(mockCheckFactionNameExists)(validInput)()
+    ).toStrictEqualRight({ id: expect.any(String), name: validInput.name })
+  })
+
+  test('invalid faction format', async () => {
+    const missingName = {} as any
+    const mockCheckFactionNameExists = () => TE.right(false)
+    expect(
+      await validateFaction(mockCheckFactionNameExists)(missingName)()
+    ).toStrictEqualLeft(expect.any(FactionDecodingError))
+  })
+
+  test('faction already exists', async () => {
+    const faction = { name: 'Goliath' }
+    const mockCheckFactionNameExists = () => TE.right(true)
+    expect(
+      await validateFaction(mockCheckFactionNameExists)(faction)()
+    ).toStrictEqualLeft(expect.any(FactionNameAlreadyExistsError))
   })
 })

@@ -1,7 +1,9 @@
-import { FactionId } from './factionId'
-import { GangId } from './gangId'
-import { String50 } from '../../common/string50'
-import { GangValidationError } from './implementation'
+import { FactionId } from '../../faction'
+import {
+  GangValidationError,
+  UnvalidatedGang,
+  ValidatedGang,
+} from './implementation'
 import * as E from 'fp-ts/Either'
 import * as TE from 'fp-ts/TaskEither'
 
@@ -9,8 +11,7 @@ import * as TE from 'fp-ts/TaskEither'
  * External dependencies
  */
 
-export type CheckFactionExists = (factionId: FactionId) => boolean
-export type CheckFactionIDExistsTE<NonDomainError = never> = (
+export type CheckFactionIDExists<NonDomainError> = (
   factionId: FactionId
 ) => TE.TaskEither<NonDomainError, boolean>
 
@@ -18,16 +19,7 @@ export type CheckFactionIDExistsTE<NonDomainError = never> = (
  * Contains the types of the public API
  */
 
-export type UnvalidatedGang = {
-  factionId: string
-  name: string
-}
-
-export type ValidatedGang = {
-  id: GangId
-  factionId: FactionId
-  name: String50
-}
+export type { UnvalidatedGang, ValidatedGang }
 
 export type GangFounded = {
   event: 'gangFounded'
@@ -39,23 +31,8 @@ export type FoundGangEvent = GangFounded
 export type FoundGangError = GangValidationError
 export type FoundGangSuccess = {
   gangFounded: ValidatedGang
-  events: FoundGangEvent[]
 }
 
-export type FoundGangDependencies = {
-  checkFactionExists: CheckFactionExists
+export type FoundGangDependencies<NonDomainError> = {
+  checkFactionIdExists: CheckFactionIDExists<NonDomainError>
 }
-
-export type FoundGangDependenciesTE<NonDomainError = never> = {
-  checkFactionIdExists: CheckFactionIDExistsTE
-}
-
-export type FoundGang = (
-  dependencies: FoundGangDependencies
-) => (
-  unvalidatedGang: UnvalidatedGang
-) => E.Either<FoundGangError, FoundGangEvent[]>
-
-export type FoundGangTE<NonDomainError = never> = (
-  unvalidatedGang: UnvalidatedGang
-) => TE.TaskEither<FoundGangError | NonDomainError, FoundGangSuccess>
