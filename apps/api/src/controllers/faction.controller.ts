@@ -16,9 +16,3 @@ export const getFactionCollection = async (ctx: Context) => {
     meta: { pagination: { totalCount } },
   }
 }
-
-export const postFaction = async (ctx: Context) => {
-  const createFactionDTO = CreateFactionDTO.parse(ctx.request.body)
-  const savedFaction = await createFaction(createFactionDTO)
-  ctx.body = savedFaction
-}

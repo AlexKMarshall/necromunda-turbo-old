@@ -1,8 +1,5 @@
 import Router from '@koa/router'
-import {
-  getFactionCollection,
-  postFaction,
-} from './controllers/faction.controller'
+import { getFactionCollection } from './controllers/faction.controller'
 import { createFactionController } from './factionNew'
 
 export const router = new Router()
