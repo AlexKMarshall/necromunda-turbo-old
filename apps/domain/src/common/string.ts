@@ -1,5 +1,4 @@
 import { pipe } from 'fp-ts/lib/function'
-import * as t from 'io-ts'
 import * as D from 'io-ts/Decoder'
 
 export type MinBrand<N extends number> = {
