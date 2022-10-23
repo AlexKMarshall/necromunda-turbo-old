@@ -4,7 +4,6 @@ import { flow, pipe } from 'fp-ts/lib/function'
 import { prisma } from './prisma'
 import * as TE from 'fp-ts/TaskEither'
 import { Context } from 'koa'
-import { ValidatedFaction } from '@necromunda/domain/dist/faction'
 import { safeDBAccess } from './infrastructure/db-utils'
 
 const findFactionByName = safeDBAccess((name: string) =>
@@ -15,7 +14,7 @@ const findFactionById = safeDBAccess((id: string) =>
   prisma.faction.findUnique({ where: { id } })
 )
 
-const persistFaction = safeDBAccess((faction: ValidatedFaction) =>
+const persistFaction = safeDBAccess((faction: N.Faction.ValidatedFaction) =>
   prisma.faction.create({ data: faction })
 )
 
