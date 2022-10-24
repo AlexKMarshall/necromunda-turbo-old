@@ -126,7 +126,7 @@ importers:
       '@testing-library/react': 13.4.0
       '@types/jest': 29.2.0
       '@types/node': 18.7.23
-      '@types/react': 18.0.21
+      '@types/react': 18.0.22
       '@types/react-dom': 18.0.6
       '@types/testing-library__jest-dom': 5.14.5
       '@vitejs/plugin-react': 2.1.0
@@ -152,7 +152,7 @@ importers:
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@types/jest': 29.2.0
       '@types/node': 18.7.23
-      '@types/react': 18.0.21
+      '@types/react': 18.0.22
       '@types/react-dom': 18.0.6
       '@types/testing-library__jest-dom': 5.14.5
       '@vitejs/plugin-react': 2.1.0_vite@3.1.8
@@ -223,7 +223,7 @@ importers:
   packages/ui:
     specifiers:
       '@types/jest': 29.2.0
-      '@types/react': 18.0.21
+      '@types/react': 18.0.22
       '@types/react-dom': 18.0.6
       eslint: 8.26.0
       eslint-config-custom-react: workspace:*
@@ -235,7 +235,7 @@ importers:
       typescript: 4.8.4
     devDependencies:
       '@types/jest': 29.2.0
-      '@types/react': 18.0.21
+      '@types/react': 18.0.22
       '@types/react-dom': 18.0.6
       eslint: 8.26.0
       eslint-config-custom-react: link:../eslint-config-custom-react
@@ -1449,11 +1449,11 @@ packages:
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 18.0.21
+      '@types/react': 18.0.22
     dev: true
 
-  /@types/react/18.0.21:
-    resolution: {integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==}
+  /@types/react/18.0.22:
+    resolution: {integrity: sha512-4yWc5PyCkZN8ke8K9rQHkTXxHIWHxLzzW6RI1kXVoepkD3vULpKzC2sDtAMKn78h92BRYuzf+7b/ms7ajE6hFw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
