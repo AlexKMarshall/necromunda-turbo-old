@@ -22,7 +22,7 @@
   "devDependencies": {
     "@relmify/jest-fp-ts": "2.0.2",
     "@types/jest": "29.2.0",
-    "@types/node": "18.11.7",
+    "@types/node": "18.11.8",
     "@types/uuid": "8.3.4",
     "@vitest/coverage-c8": "0.24.3",
     "eslint": "8.26.0",
