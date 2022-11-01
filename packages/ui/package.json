@@ -20,7 +20,7 @@
     "testEnvironment": "jsdom"
   },
   "devDependencies": {
-    "@types/jest": "29.2.0",
+    "@types/jest": "29.2.1",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
     "eslint": "8.26.0",
