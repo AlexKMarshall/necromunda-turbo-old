@@ -19,7 +19,7 @@ importers:
       '@types/body-parser': 1.19.2
       '@types/cors': 2.8.12
       '@types/express': 4.17.14
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/koa': 2.13.5
       '@types/koa-bodyparser': 4.3.9
       '@types/koa-morgan': 1.0.5
@@ -60,7 +60,7 @@ importers:
       '@types/body-parser': 1.19.2
       '@types/cors': 2.8.12
       '@types/express': 4.17.14
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/koa': 2.13.5
       '@types/koa-bodyparser': 4.3.9
       '@types/koa-morgan': 1.0.5
@@ -82,7 +82,7 @@ importers:
   apps/domain:
     specifiers:
       '@relmify/jest-fp-ts': 2.0.2
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/node': 18.11.9
       '@types/uuid': 8.3.4
       '@vitest/coverage-c8': 0.24.5
@@ -105,7 +105,7 @@ importers:
       zod: 3.19.1
     devDependencies:
       '@relmify/jest-fp-ts': 2.0.2_fp-ts@2.13.1+io-ts@2.2.19
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/node': 18.11.9
       '@types/uuid': 8.3.4
       '@vitest/coverage-c8': 0.24.5
@@ -124,7 +124,7 @@ importers:
     specifiers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/node': 18.11.9
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
@@ -150,7 +150,7 @@ importers:
     devDependencies:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/node': 18.11.9
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
@@ -199,7 +199,7 @@ importers:
 
   packages/logger:
     specifiers:
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/node': 18.11.9
       eslint: 8.26.0
       eslint-config-custom-server: workspace:*
@@ -208,7 +208,7 @@ importers:
       tsconfig: workspace:*
       typescript: 4.8.4
     devDependencies:
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/node': 18.11.9
       eslint: 8.26.0
       eslint-config-custom-server: link:../eslint-config-custom-server
@@ -222,7 +222,7 @@ importers:
 
   packages/ui:
     specifiers:
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
       eslint: 8.26.0
@@ -234,7 +234,7 @@ importers:
       tsup: 6.3.0
       typescript: 4.8.4
     devDependencies:
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
       eslint: 8.26.0
@@ -248,7 +248,7 @@ importers:
 
   packages/validation:
     specifiers:
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       eslint: 8.26.0
       eslint-config-custom-server: workspace:*
       jest: 29.2.2
@@ -259,7 +259,7 @@ importers:
     dependencies:
       zod: 3.19.1
     devDependencies:
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
       eslint: 8.26.0
       eslint-config-custom-server: link:../eslint-config-custom-server
       jest: 29.2.2
@@ -1352,8 +1352,8 @@ packages:
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
 
-  /@types/jest/29.2.1:
-    resolution: {integrity: sha512-nKixEdnGDqFOZkMTF74avFNr3yRqB1ZJ6sRZv5/28D5x2oLN14KApv7F9mfDT/vUic0L3tRCsh3XWpWjtJisUQ==}
+  /@types/jest/29.2.2:
+    resolution: {integrity: sha512-og1wAmdxKoS71K2ZwSVqWPX6OVn3ihZ6ZT2qvZvZQm90lJVDyXIjYcu4Khx2CNIeaFv12rOU/YObOsI3VOkzog==}
     dependencies:
       expect: 29.2.2
       pretty-format: 29.2.1
@@ -1483,7 +1483,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.5:
     resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
     dependencies:
-      '@types/jest': 29.2.1
+      '@types/jest': 29.2.2
     dev: true
 
   /@types/uuid/8.3.4:
