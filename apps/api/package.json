@@ -37,7 +37,7 @@
     "@types/morgan": "1.9.3",
     "@types/node": "18.11.9",
     "@types/supertest": "2.0.12",
-    "eslint": "8.26.0",
+    "eslint": "8.27.0",
     "eslint-config-custom-server": "workspace:*",
     "jest": "29.2.2",
     "jest-presets": "workspace:*",
