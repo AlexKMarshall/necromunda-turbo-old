@@ -21,7 +21,7 @@
     "preset": "jest-presets/jest/node"
   },
   "devDependencies": {
-    "@types/jest": "29.2.2",
+    "@types/jest": "29.2.3",
     "eslint": "8.27.0",
     "eslint-config-custom-server": "workspace:*",
     "jest": "29.3.1",
