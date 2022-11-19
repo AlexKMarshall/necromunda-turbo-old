@@ -269,7 +269,6 @@ importers:
       eslint-config-custom-server: workspace:*
       jest: 29.3.1
       jest-presets: workspace:*
-      keyv: ^4.5.2
       tsconfig: workspace:*
       typescript: 4.9.3
     devDependencies:
@@ -279,7 +278,6 @@ importers:
       eslint-config-custom-server: link:../eslint-config-custom-server
       jest: 29.3.1_@types+node@18.11.9
       jest-presets: link:../jest-presets
-      keyv: 4.5.2
       tsconfig: link:../tsconfig
       typescript: 4.9.3
 
@@ -8385,12 +8383,6 @@ packages:
 
   /keyv/4.5.0:
     resolution: {integrity: sha512-2YvuMsA+jnFGtBareKqgANOEKe1mk3HKiXu2fRmAfyxG0MJAywNhi5ttWA3PMjl4NmpyjZNbFifR2vNjW1znfA==}
-    dependencies:
-      json-buffer: 3.0.1
-    dev: true
-
-  /keyv/4.5.2:
-    resolution: {integrity: sha512-5MHbFaKn8cNSmVW7BYnijeAVlE4cYA/SVkifVgrh7yotnfhKmjuXpDKjrABLnT0SfHWV21P8ow07OGfRrNDg8g==}
     dependencies:
       json-buffer: 3.0.1
     dev: true
