@@ -4,9 +4,11 @@ importers:
 
   .:
     specifiers:
+      keyv: ^4.5.2
       prettier: 2.7.1
       turbo: 1.6.3
     devDependencies:
+      keyv: 4.5.2
       prettier: 2.7.1
       turbo: 1.6.3
 
@@ -8383,6 +8385,12 @@ packages:
 
   /keyv/4.5.0:
     resolution: {integrity: sha512-2YvuMsA+jnFGtBareKqgANOEKe1mk3HKiXu2fRmAfyxG0MJAywNhi5ttWA3PMjl4NmpyjZNbFifR2vNjW1znfA==}
+    dependencies:
+      json-buffer: 3.0.1
+    dev: true
+
+  /keyv/4.5.2:
+    resolution: {integrity: sha512-5MHbFaKn8cNSmVW7BYnijeAVlE4cYA/SVkifVgrh7yotnfhKmjuXpDKjrABLnT0SfHWV21P8ow07OGfRrNDg8g==}
     dependencies:
       json-buffer: 3.0.1
     dev: true
