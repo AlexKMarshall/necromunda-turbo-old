@@ -33,5 +33,5 @@ export const getPaginatedFactions = ({
     TE.Do,
     TE.apS("results", getFactionCollection({ page, size })),
     TE.apS("count", getFactionCount()),
-    TE.map(({ results, count }) => ({ results, count, page }))
+    TE.map(({ results, count }) => ({ results, count, page, size }))
   );

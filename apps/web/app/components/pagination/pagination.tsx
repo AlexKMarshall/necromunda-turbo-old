@@ -4,24 +4,23 @@ import {
   ArrowLongRightIcon,
 } from "@heroicons/react/20/solid";
 import type { AnchorHTMLAttributes } from "react";
+import { Link, useSearchParams } from "@remix-run/react";
 
 type Props = {
   currentPage: number;
   size: number;
   count: number;
-  href: (page: number) => string;
   edgeRange?: number;
   middleRange?: number;
-  Link: PaginationLink;
+  Link?: PaginationLink;
 };
 export function Pagination({
   currentPage,
   size,
   count,
-  href,
   edgeRange = 1,
   middleRange = 1,
-  Link,
+  Link = DefaultPaginationLink,
 }: Props): JSX.Element {
   const totalPages = Math.ceil(count / size);
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -177,3 +176,18 @@ function PaginationNext({ pageNumber, Link }: PaginationNextProps) {
     </Link>
   );
 }
+
+const DefaultPaginationLink: PaginationLink = ({
+  page,
+  children,
+  ...props
+}) => {
+  const [searchParams] = useSearchParams();
+  const clonedSearchParams = new URLSearchParams(searchParams);
+  clonedSearchParams.set("page", String(page));
+  return (
+    <Link to={`?${clonedSearchParams.toString()}`} {...props}>
+      {children}
+    </Link>
+  );
+};

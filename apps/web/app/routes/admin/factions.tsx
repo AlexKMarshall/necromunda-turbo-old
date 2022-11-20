@@ -5,6 +5,7 @@ import { getPaginatedFactions } from "~/models/faction.server";
 import * as D from "io-ts/Decoder";
 import { flow, pipe } from "fp-ts/function";
 import * as TE from "fp-ts/TaskEither";
+import { Pagination } from "~/components/pagination";
 
 const numberFromString: D.Decoder<unknown, number> = pipe(
   D.string,
@@ -51,7 +52,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 };
 
 export default function Admin() {
-  const { results } = useLoaderData<typeof loader>();
+  const { results, page, size, count } = useLoaderData<typeof loader>();
   return (
     <main>
       <h1>Factions</h1>
@@ -60,6 +61,7 @@ export default function Admin() {
           <li key={faction.id}>{faction.name}</li>
         ))}
       </ul>
+      <Pagination currentPage={page} size={size} count={count} />
       <Link to="/admin/factions/new">New</Link>
       <Outlet />
     </main>
