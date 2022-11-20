@@ -7,25 +7,25 @@ import * as N from "@necromunda/domain";
 import * as TE from "fp-ts/TaskEither";
 import { prisma } from "~/db.server";
 
+const checkFactionNameExists = (name: string) => {
+  return pipe(
+    TE.tryCatch(
+      () => prisma.faction.findUnique({ where: { name } }),
+      DBError.of
+    ),
+    TE.map(Boolean)
+  );
+};
+
+const saveFactionInDb = (faction: N.Faction.ValidatedFaction) => {
+  return pipe(
+    TE.tryCatch(() => prisma.faction.create({ data: faction }), DBError.of)
+  );
+};
+
 export const action = async ({ request }: ActionArgs) => {
   const formData = await request.formData();
   const formDataEntries = Object.fromEntries(formData.entries()) as any;
-
-  const saveFactionInDb = (faction: N.Faction.ValidatedFaction) => {
-    return pipe(
-      TE.tryCatch(() => prisma.faction.create({ data: faction }), DBError.of)
-    );
-  };
-
-  const checkFactionNameExists = (name: string) => {
-    return pipe(
-      TE.tryCatch(
-        () => prisma.faction.findUnique({ where: { name } }),
-        DBError.of
-      ),
-      TE.map(Boolean)
-    );
-  };
 
   return pipe(
     formDataEntries,
@@ -54,11 +54,17 @@ export default function FactionsNew() {
       <Form method="post">
         <label>
           name:
-          <input type="text" name="name" />
+          <input
+            type="text"
+            name="name"
+            required
+            minLength={2}
+            maxLength={50}
+          />
         </label>
         <label>
           description:
-          <textarea name="description" />
+          <textarea name="description" maxLength={200} />
         </label>
         <button type="submit">submit</button>
       </Form>

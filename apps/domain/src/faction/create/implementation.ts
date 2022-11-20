@@ -11,9 +11,16 @@ export type UnvalidatedFaction = {
   name: string
 }
 
-const FactionDecoder = D.struct({
-  name: pipe(D.string, D.compose(S.between(2, 50))),
-})
+const FactionDecoder = pipe(
+  D.struct({
+    name: pipe(D.string, D.compose(S.between(2, 50))),
+  }),
+  D.intersect(
+    D.partial({
+      description: pipe(D.string, D.compose(S.max(200))),
+    })
+  )
+)
 
 type FactionDecoded = D.TypeOf<typeof FactionDecoder>
 
