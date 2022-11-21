@@ -1,24 +1,14 @@
 import { Context } from 'koa'
-import {
-  createFaction,
-  CreateFactionDTO,
-  getFactionCount,
-  getFactions,
-} from '../faction'
+import { getFactionCount, getFactions } from '../faction'
 
 export const getFactionCollection = async (ctx: Context) => {
   const [factions, totalCount] = await Promise.all([
-    getFactions,
-    getFactionCount,
+    getFactions(),
+    getFactionCount(),
   ])
+  console.log({ factions })
   ctx.body = {
     items: factions,
     meta: { pagination: { totalCount } },
   }
-}
-
-export const postFaction = async (ctx: Context) => {
-  const createFactionDTO = CreateFactionDTO.parse(ctx.request.body)
-  const savedFaction = await createFaction(createFactionDTO)
-  ctx.body = savedFaction
 }
