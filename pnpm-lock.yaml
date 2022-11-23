@@ -237,12 +237,12 @@ importers:
 
   packages/eslint-config-custom:
     specifiers:
-      eslint-config-next: 12.3.1
+      eslint-config-next: 12.3.4
       eslint-config-prettier: 8.5.0
       eslint-config-turbo: 0.0.4
       eslint-plugin-react: 7.31.11
     dependencies:
-      eslint-config-next: 12.3.1_hsf322ms6xhhd4b5ne6lb74y4a
+      eslint-config-next: 12.3.4_hsf322ms6xhhd4b5ne6lb74y4a
       eslint-config-prettier: 8.5.0_eslint@8.28.0
       eslint-config-turbo: 0.0.4_eslint@8.28.0
       eslint-plugin-react: 7.31.11_eslint@8.28.0
@@ -2226,8 +2226,8 @@ packages:
       - supports-color
     dev: true
 
-  /@next/eslint-plugin-next/12.3.1:
-    resolution: {integrity: sha512-sw+lTf6r6P0j+g/n9y4qdWWI2syPqZx+uc0+B/fRENqfR3KpSid6MIKqc9gNwGhJASazEQ5b3w8h4cAET213jw==}
+  /@next/eslint-plugin-next/12.3.4:
+    resolution: {integrity: sha512-BFwj8ykJY+zc1/jWANsDprDIu2MgwPOIKxNVnrKvPs+f5TPegrVnem8uScND+1veT4B7F6VeqgaNLFW1Hzl9Og==}
     dependencies:
       glob: 7.1.7
     dev: false
@@ -3588,16 +3588,6 @@ packages:
 
   /array-flatten/1.1.1:
     resolution: {integrity: sha512-PCVAQswWemu6UdxsDFFX/+gVeYqKAod3D3UVm91jHwynguOwAvYPhx8nNlM++NqRcK6CxxpUafjmhIdKiHibqg==}
-
-  /array-includes/3.1.5:
-    resolution: {integrity: sha512-iSDYZMMyTPkiFasVqfuAQnWAYcvO/SeBSCGKePoEthjp4LEMTe4uLc7b025o4jAZpHhihh8xPo99TNWUWWkGDQ==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.1.4
-      es-abstract: 1.20.4
-      get-intrinsic: 1.1.3
-      is-string: 1.0.7
 
   /array-includes/3.1.6:
     resolution: {integrity: sha512-sgTbLvL6cNnw24FnbaDyjmvddQ2ML8arZsgaJhoABMoplz/4QRhtrYS+alr1BUM1Bwp6dhx8vVCBSLG+StwOFw==}
@@ -5519,8 +5509,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-next/12.3.1_hsf322ms6xhhd4b5ne6lb74y4a:
-    resolution: {integrity: sha512-EN/xwKPU6jz1G0Qi6Bd/BqMnHLyRAL0VsaQaWA7F3KkjAgZHi4f1uL1JKGWNxdQpHTW/sdGONBd0bzxUka/DJg==}
+  /eslint-config-next/12.3.4_hsf322ms6xhhd4b5ne6lb74y4a:
+    resolution: {integrity: sha512-WuT3gvgi7Bwz00AOmKGhOeqnyA5P29Cdyr0iVjLyfDbk+FANQKcOjFUTZIdyYfe5Tq1x4TGcmoe4CwctGvFjHQ==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -5528,7 +5518,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 12.3.1
+      '@next/eslint-plugin-next': 12.3.4
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.38.0_hsf322ms6xhhd4b5ne6lb74y4a
       eslint: 8.28.0
@@ -5704,7 +5694,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      array-includes: 3.1.5
+      array-includes: 3.1.6
       array.prototype.flat: 1.3.0
       debug: 2.6.9
       doctrine: 2.1.0
@@ -5715,7 +5705,7 @@ packages:
       is-core-module: 2.10.0
       is-glob: 4.0.3
       minimatch: 3.1.2
-      object.values: 1.1.5
+      object.values: 1.1.6
       resolve: 1.22.1
       tsconfig-paths: 3.14.1
     transitivePeerDependencies:
@@ -5735,7 +5725,7 @@ packages:
         optional: true
     dependencies:
       '@typescript-eslint/parser': 5.38.0_wyqvi574yv7oiwfeinomdzmc3m
-      array-includes: 3.1.5
+      array-includes: 3.1.6
       array.prototype.flat: 1.3.0
       debug: 2.6.9
       doctrine: 2.1.0
@@ -5746,7 +5736,7 @@ packages:
       is-core-module: 2.10.0
       is-glob: 4.0.3
       minimatch: 3.1.2
-      object.values: 1.1.5
+      object.values: 1.1.6
       resolve: 1.22.1
       tsconfig-paths: 3.14.1
     transitivePeerDependencies:
@@ -5796,7 +5786,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.19.0
       aria-query: 4.2.2
-      array-includes: 3.1.5
+      array-includes: 3.1.6
       ast-types-flow: 0.0.7
       axe-core: 4.4.3
       axobject-query: 2.2.0
@@ -5818,7 +5808,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.19.0
       aria-query: 4.2.2
-      array-includes: 3.1.5
+      array-includes: 3.1.6
       ast-types-flow: 0.0.7
       axe-core: 4.4.3
       axobject-query: 2.2.0
@@ -9580,14 +9570,6 @@ packages:
     dependencies:
       isobject: 3.0.1
     dev: true
-
-  /object.values/1.1.5:
-    resolution: {integrity: sha512-QUZRW0ilQ3PnPpbNtgdNV1PDbEqLIiSFB3l+EnGtBQ/8SUTLj1PZwtQHABZtLgwpJZTSZhuGLOGk57Drx2IvYg==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.1.4
-      es-abstract: 1.20.4
 
   /object.values/1.1.6:
     resolution: {integrity: sha512-FVVTkD1vENCsAcwNs9k6jea2uHC/X0+JcjG8YA60FN5CMaJmG95wT9jek/xX9nornqGRrBkKtzuAu2wuHpKqvw==}
