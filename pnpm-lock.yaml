@@ -125,6 +125,7 @@ importers:
   apps/web:
     specifiers:
       '@faker-js/faker': ^7.5.0
+      '@heroicons/react': ^2.0.13
       '@necromunda/domain': workspace:*
       '@prisma/client': ^4.4.0
       '@remix-run/dev': ^1.7.3
@@ -149,6 +150,7 @@ importers:
       bcryptjs: ^2.4.3
       binode: ^1.0.5
       c8: ^7.12.0
+      clsx: ^1.2.1
       cookie: ^0.5.0
       cross-env: ^7.0.3
       cypress: ^11.0.0
@@ -157,6 +159,7 @@ importers:
       eslint-plugin-cypress: ^2.12.1
       fp-ts: 2.12.3
       happy-dom: ^7.0.0
+      io-ts: 2.2.19
       isbot: ^3.5.3
       msw: ^0.49.0
       npm-run-all: ^4.1.5
@@ -176,6 +179,7 @@ importers:
       vite-tsconfig-paths: ^3.5.0
       vitest: ^0.25.0
     dependencies:
+      '@heroicons/react': 2.0.13_react@18.2.0
       '@necromunda/domain': link:../domain
       '@prisma/client': 4.4.0_prisma@4.4.0
       '@remix-run/node': 1.7.3_biqbaboplfbrettd7655fr4n2y
@@ -183,7 +187,9 @@ importers:
       '@remix-run/serve': 1.7.3_biqbaboplfbrettd7655fr4n2y
       '@remix-run/server-runtime': 1.7.3_biqbaboplfbrettd7655fr4n2y
       bcryptjs: 2.4.3
+      clsx: 1.2.1
       fp-ts: 2.12.3
+      io-ts: 2.2.19_fp-ts@2.12.3
       isbot: 3.6.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -1856,6 +1862,14 @@ packages:
     dependencies:
       '@hapi/hoek': 9.3.0
     dev: true
+
+  /@heroicons/react/2.0.13_react@18.2.0:
+    resolution: {integrity: sha512-iSN5XwmagrnirWlYEWNPdCDj9aRYVD/lnK3JlsC9/+fqGF80k8C7rl+1HCvBX0dBoagKqOFBs6fMhJJ1hOg1EQ==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@humanwhocodes/config-array/0.11.6:
     resolution: {integrity: sha512-jJr+hPTJYKyDILJfhNSHsjiwXYf26Flsz8DvNndOsHs5pwSnpGUEy8yzF0JYhCEvTDdV2vuOK5tt8BVhwO5/hg==}
@@ -4351,6 +4365,11 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
     dev: true
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /co-body/6.1.0:
     resolution: {integrity: sha512-m7pOT6CdLN7FuXUcpuz/8lfQ/L77x8SchHCF4G0RBTJO20Wzmhn5Sp4/5WsKy8OSpifBSUrmg83qEqaDHdyFuQ==}
@@ -7258,6 +7277,14 @@ packages:
       get-intrinsic: 1.1.3
       has: 1.0.3
       side-channel: 1.0.4
+
+  /io-ts/2.2.19_fp-ts@2.12.3:
+    resolution: {integrity: sha512-ED0GQwvKRr5C2jqOOJCkuJW2clnbzqFexQ8V7Qsb+VB36S1Mk/OKH7k0FjSe4mjKy9qBRA3OqgVGyFMUEKIubw==}
+    peerDependencies:
+      fp-ts: ^2.5.0
+    dependencies:
+      fp-ts: 2.12.3
+    dev: false
 
   /io-ts/2.2.19_fp-ts@2.13.1:
     resolution: {integrity: sha512-ED0GQwvKRr5C2jqOOJCkuJW2clnbzqFexQ8V7Qsb+VB36S1Mk/OKH7k0FjSe4mjKy9qBRA3OqgVGyFMUEKIubw==}
