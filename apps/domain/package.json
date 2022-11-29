@@ -23,7 +23,7 @@
     "@relmify/jest-fp-ts": "2.0.2",
     "@types/jest": "29.2.3",
     "@types/node": "18.11.9",
-    "@types/uuid": "8.3.4",
+    "@types/uuid": "9.0.0",
     "@vitest/coverage-c8": "0.25.3",
     "eslint": "8.28.0",
     "eslint-config-custom": "workspace:*",
