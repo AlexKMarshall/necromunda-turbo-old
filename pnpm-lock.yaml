@@ -87,7 +87,7 @@ importers:
       '@types/jest': 29.2.4
       '@types/node': 18.11.11
       '@types/uuid': 9.0.0
-      '@vitest/coverage-c8': 0.25.5
+      '@vitest/coverage-c8': 0.25.6
       eslint: 8.29.0
       eslint-config-custom: workspace:*
       fp-ts: 2.13.1
@@ -99,7 +99,7 @@ importers:
       typescript: 4.9.4
       uuid: 9.0.0
       vite: 3.2.5
-      vitest: 0.25.5
+      vitest: 0.25.6
       zod: 3.19.1
     dependencies:
       fp-ts: 2.13.1
@@ -110,7 +110,7 @@ importers:
       '@types/jest': 29.2.4
       '@types/node': 18.11.11
       '@types/uuid': 9.0.0
-      '@vitest/coverage-c8': 0.25.5
+      '@vitest/coverage-c8': 0.25.6
       eslint: 8.29.0
       eslint-config-custom: link:../../packages/eslint-config-custom
       io-ts: 2.2.19_fp-ts@2.13.1
@@ -120,7 +120,7 @@ importers:
       type-fest: 3.3.0
       typescript: 4.9.4
       vite: 3.2.5_@types+node@18.11.11
-      vitest: 0.25.5
+      vitest: 0.25.6
 
   apps/web:
     specifiers:
@@ -3340,11 +3340,11 @@ packages:
       - terser
     dev: true
 
-  /@vitest/coverage-c8/0.25.5:
-    resolution: {integrity: sha512-tXlg0QVkTQ+7dqhsuwRFovP5vjgYGyBrRREFS55IQ20IsiSaRug9sRblRsckTXmGtz1OMJy/Lxv1gFVo24/ipA==}
+  /@vitest/coverage-c8/0.25.6:
+    resolution: {integrity: sha512-+Bcs1XZ8CuEe52QSOgzqmqiV82CXZRRj3yclPQqtLkUV4S6+kdOdfRTtMHOilwhZH70giDjBQx3jgiZoYgFVMA==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.5
+      vitest: 0.25.6
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -12016,8 +12016,8 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.25.5:
-    resolution: {integrity: sha512-lFKSTZV+AjuL44/yNC0aDPKTiasYSqOQ97Gg2G4P2LnjyzQ21ZUs4rQOscHK3lrSnVuir3+1QavHzbDgH4tWQA==}
+  /vitest/0.25.6:
+    resolution: {integrity: sha512-jdPgmZ7BcDnm1+hmMPIl9BZjSy+b8Y8V0tQMsv7ECO90Qic7EZ5/+traILXLpsXgqK5KgVrUJmchevAUuKL/1w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
