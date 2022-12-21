@@ -98,7 +98,7 @@ importers:
       type-fest: 3.4.0
       typescript: 4.9.4
       uuid: 9.0.0
-      vite: 4.0.2
+      vite: 4.0.3
       vitest: 0.26.2
       zod: 3.19.1
     dependencies:
@@ -119,7 +119,7 @@ importers:
       tsconfig: link:../../packages/tsconfig
       type-fest: 3.4.0
       typescript: 4.9.4
-      vite: 4.0.2_@types+node@18.11.17
+      vite: 4.0.3_@types+node@18.11.17
       vitest: 0.26.2
 
   apps/web:
@@ -12216,7 +12216,7 @@ packages:
       pathe: 0.2.0
       source-map: 0.6.1
       source-map-support: 0.5.21
-      vite: 4.0.2_@types+node@18.11.17
+      vite: 4.0.3_@types+node@18.11.17
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12237,7 +12237,7 @@ packages:
       pathe: 0.2.0
       source-map: 0.6.1
       source-map-support: 0.5.21
-      vite: 4.0.2_@types+node@18.11.17
+      vite: 4.0.3_@types+node@18.11.17
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12296,8 +12296,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.0.2_@types+node@18.11.17:
-    resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
+  /vite/4.0.3_@types+node@18.11.17:
+    resolution: {integrity: sha512-HvuNv1RdE7deIfQb8mPk51UKjqptO/4RXZ5yXSAvurd5xOckwS/gg8h9Tky3uSbnjYTgUm0hVCet1cyhKd73ZA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -12366,7 +12366,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 4.0.2_@types+node@18.11.17
+      vite: 4.0.3_@types+node@18.11.17
       vite-node: 0.26.0_@types+node@18.11.17
     transitivePeerDependencies:
       - less
@@ -12412,7 +12412,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 4.0.2_@types+node@18.11.17
+      vite: 4.0.3_@types+node@18.11.17
       vite-node: 0.26.2_@types+node@18.11.17
     transitivePeerDependencies:
       - less
