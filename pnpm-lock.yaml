@@ -21,7 +21,7 @@ importers:
       '@types/body-parser': 1.19.2
       '@types/cors': 2.8.13
       '@types/express': 4.17.15
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/koa': 2.13.5
       '@types/koa-bodyparser': 4.3.10
       '@types/koa-morgan': 1.0.5
@@ -62,7 +62,7 @@ importers:
       '@types/body-parser': 1.19.2
       '@types/cors': 2.8.13
       '@types/express': 4.17.15
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/koa': 2.13.5
       '@types/koa-bodyparser': 4.3.10
       '@types/koa-morgan': 1.0.5
@@ -84,7 +84,7 @@ importers:
   apps/domain:
     specifiers:
       '@relmify/jest-fp-ts': 2.0.2
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/node': 18.11.18
       '@types/uuid': 9.0.0
       '@vitest/coverage-c8': 0.26.2
@@ -107,7 +107,7 @@ importers:
       zod: 3.19.1
     devDependencies:
       '@relmify/jest-fp-ts': 2.0.2_fp-ts@2.13.1+io-ts@2.2.19
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/node': 18.11.18
       '@types/uuid': 9.0.0
       '@vitest/coverage-c8': 0.26.2
@@ -271,7 +271,7 @@ importers:
 
   packages/logger:
     specifiers:
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/node': 18.11.18
       eslint: 8.30.0
       eslint-config-custom-server: workspace:*
@@ -280,7 +280,7 @@ importers:
       tsconfig: workspace:*
       typescript: 4.9.4
     devDependencies:
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/node': 18.11.18
       eslint: 8.30.0
       eslint-config-custom-server: link:../eslint-config-custom-server
@@ -294,7 +294,7 @@ importers:
 
   packages/ui:
     specifiers:
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.10
       eslint: 8.30.0
@@ -306,7 +306,7 @@ importers:
       tsup: 6.5.0
       typescript: 4.9.4
     devDependencies:
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.10
       eslint: 8.30.0
@@ -320,7 +320,7 @@ importers:
 
   packages/validation:
     specifiers:
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       eslint: 8.30.0
       eslint-config-custom-server: workspace:*
       jest: 29.3.1
@@ -331,7 +331,7 @@ importers:
     dependencies:
       zod: 3.19.1
     devDependencies:
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
       eslint: 8.30.0
       eslint-config-custom-server: link:../eslint-config-custom-server
       jest: 29.3.1
@@ -3107,8 +3107,8 @@ packages:
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
 
-  /@types/jest/29.2.4:
-    resolution: {integrity: sha512-PipFB04k2qTRPePduVLTRiPzQfvMeLwUN3Z21hsAKaB/W9IIzgB2pizCL466ftJlcyZqnHoC9ZHpxLGl3fS86A==}
+  /@types/jest/29.2.5:
+    resolution: {integrity: sha512-H2cSxkKgVmqNHXP7TC2L/WUorrZu8ZigyRywfVzv6EyBlxj39n4C00hjXYQWsbwqgElaj/CiAeSRmk5GoaKTgw==}
     dependencies:
       expect: 29.3.1
       pretty-format: 29.3.1
@@ -3316,7 +3316,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.5:
     resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
     dependencies:
-      '@types/jest': 29.2.4
+      '@types/jest': 29.2.5
     dev: true
 
   /@types/unist/2.0.6:
