@@ -27,7 +27,7 @@ importers:
       '@types/koa-morgan': 1.0.5
       '@types/koa__cors': 3.3.0
       '@types/koa__router': 12.0.0
-      '@types/morgan': 1.9.3
+      '@types/morgan': 1.9.4
       '@types/node': 18.11.18
       '@types/supertest': 2.0.12
       eslint: 8.30.0
@@ -68,7 +68,7 @@ importers:
       '@types/koa-morgan': 1.0.5
       '@types/koa__cors': 3.3.0
       '@types/koa__router': 12.0.0
-      '@types/morgan': 1.9.3
+      '@types/morgan': 1.9.4
       '@types/node': 18.11.18
       '@types/supertest': 2.0.12
       eslint: 8.30.0
@@ -3152,7 +3152,7 @@ packages:
     resolution: {integrity: sha512-NAc3HZxk2GAesyqbFTnZowaSW178pCoGQsnmPcE1sjGenTuZorj5Hnfd8rh+bEHgpBY4rqsuA5soe/HcqrIFpQ==}
     dependencies:
       '@types/koa': 2.13.5
-      '@types/morgan': 1.9.3
+      '@types/morgan': 1.9.4
     dev: true
 
   /@types/koa/2.13.5:
@@ -3198,8 +3198,8 @@ packages:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: true
 
-  /@types/morgan/1.9.3:
-    resolution: {integrity: sha512-BiLcfVqGBZCyNCnCH3F4o2GmDLrpy0HeBVnNlyZG4fo88ZiE9SoiBe3C+2ezuwbjlEyT+PDZ17//TAlRxAn75Q==}
+  /@types/morgan/1.9.4:
+    resolution: {integrity: sha512-cXoc4k+6+YAllH3ZHmx4hf7La1dzUk6keTR4bF4b4Sc0mZxU/zK4wO7l+ZzezXm/jkYj/qC+uYGZrarZdIVvyQ==}
     dependencies:
       '@types/node': 18.11.18
     dev: true
