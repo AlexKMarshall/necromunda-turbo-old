@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@relmify/jest-fp-ts": "2.0.2",
-    "@types/jest": "29.2.4",
+    "@types/jest": "29.2.5",
     "@types/node": "18.11.18",
     "@types/uuid": "9.0.0",
     "@vitest/coverage-c8": "0.26.2",
