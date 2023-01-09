@@ -87,7 +87,7 @@ importers:
       '@types/jest': 29.2.5
       '@types/node': 18.11.18
       '@types/uuid': 9.0.0
-      '@vitest/coverage-c8': 0.26.3
+      '@vitest/coverage-c8': 0.27.0
       eslint: 8.31.0
       eslint-config-custom: workspace:*
       fp-ts: 2.13.1
@@ -99,7 +99,7 @@ importers:
       typescript: 4.9.4
       uuid: 9.0.0
       vite: 4.0.4
-      vitest: 0.26.3
+      vitest: 0.27.0
       zod: 3.19.1
     dependencies:
       fp-ts: 2.13.1
@@ -110,7 +110,7 @@ importers:
       '@types/jest': 29.2.5
       '@types/node': 18.11.18
       '@types/uuid': 9.0.0
-      '@vitest/coverage-c8': 0.26.3
+      '@vitest/coverage-c8': 0.27.0
       eslint: 8.31.0
       eslint-config-custom: link:../../packages/eslint-config-custom
       io-ts: 2.2.19_fp-ts@2.13.1
@@ -120,7 +120,7 @@ importers:
       type-fest: 3.5.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.26.3
+      vitest: 0.27.0
 
   apps/web:
     specifiers:
@@ -145,7 +145,7 @@ importers:
       '@types/react': ^18.0.20
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^3.0.0
-      '@vitest/coverage-c8': ^0.26.0
+      '@vitest/coverage-c8': ^0.27.0
       autoprefixer: ^10.4.11
       bcryptjs: ^2.4.3
       binode: ^1.0.5
@@ -177,7 +177,7 @@ importers:
       typescript: ^4.8.3
       vite: ^4.0.0
       vite-tsconfig-paths: ^4.0.0
-      vitest: ^0.26.0
+      vitest: ^0.27.0
     dependencies:
       '@heroicons/react': 2.0.13_react@18.2.0
       '@necromunda/domain': link:../domain
@@ -209,7 +209,7 @@ importers:
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 3.0.0_vite@4.0.0
-      '@vitest/coverage-c8': 0.26.0_happy-dom@8.1.0
+      '@vitest/coverage-c8': 0.27.0_happy-dom@8.1.0
       autoprefixer: 10.4.12_postcss@8.4.16
       binode: 1.0.5
       c8: 7.12.0
@@ -233,7 +233,7 @@ importers:
       typescript: 4.8.4
       vite: 4.0.0_@types+node@18.7.23
       vite-tsconfig-paths: 4.0.0_jupllj2osu4xso47txzi5uer6u
-      vitest: 0.26.0_happy-dom@8.1.0
+      vitest: 0.27.0_happy-dom@8.1.0
 
   packages/eslint-config-custom:
     specifiers:
@@ -3567,11 +3567,11 @@ packages:
       - supports-color
     dev: true
 
-  /@vitest/coverage-c8/0.26.0_happy-dom@8.1.0:
-    resolution: {integrity: sha512-1LSMHvX1Winy1dIV1XqQanIskYBvd3+TlQtxO6BeyFa57Lah2uNBm3gh5iDB+ZWCySN5o6bl7qOJdaZjEQZZeg==}
+  /@vitest/coverage-c8/0.27.0:
+    resolution: {integrity: sha512-jO/TAz/qUP1ssfIj6Gg1FxTRkOD5tJBiP3mwKayaqGunMsknCmxWVuFrgF1XH+FGZWLnFzR2InTjYxlyGNSgzQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.26.0_happy-dom@8.1.0
+      vitest: 0.27.0
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -3586,11 +3586,11 @@ packages:
       - terser
     dev: true
 
-  /@vitest/coverage-c8/0.26.3:
-    resolution: {integrity: sha512-sjmVYPozajWY2DawzuvhYX6hEe/LD6p2xv9VmPvh1zzDeNNVCAnyLcvXoaSMQD522x9bqciuyPrlrnh2iNkE/w==}
+  /@vitest/coverage-c8/0.27.0_happy-dom@8.1.0:
+    resolution: {integrity: sha512-jO/TAz/qUP1ssfIj6Gg1FxTRkOD5tJBiP3mwKayaqGunMsknCmxWVuFrgF1XH+FGZWLnFzR2InTjYxlyGNSgzQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.26.3
+      vitest: 0.27.0_happy-dom@8.1.0
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -12206,35 +12206,16 @@ packages:
       vfile-message: 3.1.2
     dev: true
 
-  /vite-node/0.26.0_@types+node@18.11.18:
-    resolution: {integrity: sha512-nLtHWCv6reONl1oFsKhQ/LT7n3UNLpvVARAJlmGrQV6qSElht/9AdN41Pa+WSkw2Winh682UzM0Yw0GNlfqejw==}
+  /vite-node/0.27.0_@types+node@18.11.18:
+    resolution: {integrity: sha512-O1o9joT0qCGx5Om6W0VNLr7M00ttrnFlfZX2d+oxt2T9oZ9DvYSv8kDRhNJDVhAgNgUm3Tc0h/+jppNf3mVKbA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
+      cac: 6.7.14
       debug: 4.3.4
       mlly: 1.0.0
       pathe: 0.2.0
-      source-map: 0.6.1
-      source-map-support: 0.5.21
-      vite: 4.0.4_@types+node@18.11.18
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - sass
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-    dev: true
-
-  /vite-node/0.26.3_@types+node@18.11.18:
-    resolution: {integrity: sha512-Te2bq0Bfvq6XiO718I+1EinMjpNYKws6SNHKOmVbILAQimKoZKDd+IZLlkaYcBXPpK3HFe2U80k8Zw+m3w/a2w==}
-    engines: {node: '>=v14.16.0'}
-    hasBin: true
-    dependencies:
-      debug: 4.3.4
-      mlly: 1.0.0
-      pathe: 0.2.0
+      picocolors: 1.0.0
       source-map: 0.6.1
       source-map-support: 0.5.21
       vite: 4.0.4_@types+node@18.11.18
@@ -12330,8 +12311,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.26.0_happy-dom@8.1.0:
-    resolution: {integrity: sha512-5kUnms5WOa0qrDCJePEPB13v9mhr+ZT1Qy0qNg0eVj1X7/Fx4GY4L1e5s3OH+BQ/J7M5WtaKsUGv9l1pbC7v2Q==}
+  /vitest/0.27.0:
+    resolution: {integrity: sha512-BnOa7T6CnXVC6UgcAsvFOZ2Dtvqkt+/Nl6CRgh4qVT70vElf65XwEL6zMRyTF+h2QXJziEkxYdrLo5WCxckMLQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -12357,17 +12338,18 @@ packages:
       '@types/node': 18.11.18
       acorn: 8.8.1
       acorn-walk: 8.2.0
+      cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 8.1.0
       local-pkg: 0.4.2
+      picocolors: 1.0.0
       source-map: 0.6.1
       strip-literal: 1.0.0
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
-      vite-node: 0.26.0_@types+node@18.11.18
+      vite-node: 0.27.0_@types+node@18.11.18
     transitivePeerDependencies:
       - less
       - sass
@@ -12377,8 +12359,8 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.26.3:
-    resolution: {integrity: sha512-FmHxU9aUCxTi23keF3vxb/Qp0lYXaaJ+jRLGOUmMS3qVTOJvgGE+f1VArupA6pEhaG2Ans4X+zV9dqM5WISMbg==}
+  /vitest/0.27.0_happy-dom@8.1.0:
+    resolution: {integrity: sha512-BnOa7T6CnXVC6UgcAsvFOZ2Dtvqkt+/Nl6CRgh4qVT70vElf65XwEL6zMRyTF+h2QXJziEkxYdrLo5WCxckMLQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -12404,16 +12386,19 @@ packages:
       '@types/node': 18.11.18
       acorn: 8.8.1
       acorn-walk: 8.2.0
+      cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
+      happy-dom: 8.1.0
       local-pkg: 0.4.2
+      picocolors: 1.0.0
       source-map: 0.6.1
       strip-literal: 1.0.0
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
-      vite-node: 0.26.3_@types+node@18.11.18
+      vite-node: 0.27.0_@types+node@18.11.18
     transitivePeerDependencies:
       - less
       - sass
