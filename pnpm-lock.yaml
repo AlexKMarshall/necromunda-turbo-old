@@ -239,29 +239,29 @@ importers:
     specifiers:
       eslint-config-next: 12.3.4
       eslint-config-prettier: 8.5.0
-      eslint-config-turbo: 0.0.4
+      eslint-config-turbo: 0.0.7
       eslint-plugin-react: 7.31.11
     dependencies:
       eslint-config-next: 12.3.4_iukboom6ndih5an6iafl45j2fe
       eslint-config-prettier: 8.5.0_eslint@8.31.0
-      eslint-config-turbo: 0.0.4_eslint@8.31.0
+      eslint-config-turbo: 0.0.7_eslint@8.31.0
       eslint-plugin-react: 7.31.11_eslint@8.31.0
 
   packages/eslint-config-custom-react:
     specifiers:
       eslint-config-prettier: 8.5.0
-      eslint-config-turbo: 0.0.4
+      eslint-config-turbo: 0.0.7
       eslint-plugin-react: 7.31.11
     dependencies:
       eslint-config-prettier: 8.5.0_eslint@8.31.0
-      eslint-config-turbo: 0.0.4_eslint@8.31.0
+      eslint-config-turbo: 0.0.7_eslint@8.31.0
       eslint-plugin-react: 7.31.11_eslint@8.31.0
 
   packages/eslint-config-custom-server:
     specifiers:
-      eslint-config-turbo: 0.0.4
+      eslint-config-turbo: 0.0.7
     dependencies:
-      eslint-config-turbo: 0.0.4_eslint@8.31.0
+      eslint-config-turbo: 0.0.7_eslint@8.31.0
 
   packages/jest-presets:
     specifiers:
@@ -5778,13 +5778,13 @@ packages:
       eslint: 8.31.0
     dev: false
 
-  /eslint-config-turbo/0.0.4_eslint@8.31.0:
-    resolution: {integrity: sha512-HErPS/wfWkSdV9Yd2dDkhZt3W2B78Ih/aWPFfaHmCMjzPalh+5KxRRGTf8MOBQLCebcWJX0lP1Zvc1rZIHlXGg==}
+  /eslint-config-turbo/0.0.7_eslint@8.31.0:
+    resolution: {integrity: sha512-WbrGlyfs94rOXrhombi1wjIAYGdV2iosgJRndOZtmDQeq5GLTzYmBUCJQZWtLBEBUPCj96RxZ2OL7Cn+xv/Azg==}
     peerDependencies:
-      eslint: ^7.23.0 || ^8.0.0
+      eslint: '>6.6.0'
     dependencies:
       eslint: 8.31.0
-      eslint-plugin-turbo: 0.0.4_eslint@8.31.0
+      eslint-plugin-turbo: 0.0.7_eslint@8.31.0
     dev: false
 
   /eslint-import-resolver-node/0.3.6:
@@ -6142,10 +6142,10 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-turbo/0.0.4_eslint@8.31.0:
-    resolution: {integrity: sha512-dfmYE/iPvoJInQq+5E/0mj140y/rYwKtzZkn3uVK8+nvwC5zmWKQ6ehMWrL4bYBkGzSgpOndZM+jOXhPQ2m8Cg==}
+  /eslint-plugin-turbo/0.0.7_eslint@8.31.0:
+    resolution: {integrity: sha512-iajOH8eD4jha3duztGVBD1BEmvNrQBaA/y3HFHf91vMDRYRwH7BpHSDFtxydDpk5ghlhRxG299SFxz7D6z4MBQ==}
     peerDependencies:
-      eslint: ^7.23.0 || ^8.0.0
+      eslint: '>6.6.0'
     dependencies:
       eslint: 8.31.0
     dev: false
