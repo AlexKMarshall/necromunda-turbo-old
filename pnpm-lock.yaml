@@ -157,7 +157,7 @@ importers:
       eslint: ^8.23.1
       eslint-config-prettier: ^8.5.0
       eslint-plugin-cypress: ^2.12.1
-      fp-ts: 2.12.3
+      fp-ts: 2.13.1
       happy-dom: ^8.0.0
       io-ts: 2.2.19
       isbot: ^3.5.3
@@ -188,8 +188,8 @@ importers:
       '@remix-run/server-runtime': 1.7.3_biqbaboplfbrettd7655fr4n2y
       bcryptjs: 2.4.3
       clsx: 1.2.1
-      fp-ts: 2.12.3
-      io-ts: 2.2.19_fp-ts@2.12.3
+      fp-ts: 2.13.1
+      io-ts: 2.2.19_fp-ts@2.13.1
       isbot: 3.6.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -6820,10 +6820,6 @@ packages:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
 
-  /fp-ts/2.12.3:
-    resolution: {integrity: sha512-8m0XvW8kZbfnJOA4NvSVXu95mLbPf4LQGwQyqVukIYS4KzSNJiyKSmuZUmbVHteUi6MGkAJGPb0goPZqI+Tsqg==}
-    dev: false
-
   /fp-ts/2.13.1:
     resolution: {integrity: sha512-0eu5ULPS2c/jsa1lGFneEFFEdTbembJv8e4QKXeVJ3lm/5hyve06dlKZrpxmMwJt6rYen7sxmHHK2CLaXvWuWQ==}
 
@@ -7464,21 +7460,12 @@ packages:
       has: 1.0.3
       side-channel: 1.0.4
 
-  /io-ts/2.2.19_fp-ts@2.12.3:
-    resolution: {integrity: sha512-ED0GQwvKRr5C2jqOOJCkuJW2clnbzqFexQ8V7Qsb+VB36S1Mk/OKH7k0FjSe4mjKy9qBRA3OqgVGyFMUEKIubw==}
-    peerDependencies:
-      fp-ts: ^2.5.0
-    dependencies:
-      fp-ts: 2.12.3
-    dev: false
-
   /io-ts/2.2.19_fp-ts@2.13.1:
     resolution: {integrity: sha512-ED0GQwvKRr5C2jqOOJCkuJW2clnbzqFexQ8V7Qsb+VB36S1Mk/OKH7k0FjSe4mjKy9qBRA3OqgVGyFMUEKIubw==}
     peerDependencies:
       fp-ts: ^2.5.0
     dependencies:
       fp-ts: 2.13.1
-    dev: true
 
   /ip/1.1.8:
     resolution: {integrity: sha512-PuExPYUiu6qMBQb4l06ecm6T6ujzhmh+MeJcW9wa89PoAz5pvd4zPgN5WJV104mb6S2T1AwNIAaB70JNrLQWhg==}
