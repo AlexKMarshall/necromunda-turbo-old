@@ -86,7 +86,7 @@ importers:
       '@relmify/jest-fp-ts': 2.0.2
       '@types/jest': 29.2.5
       '@types/node': 18.11.18
-      '@types/uuid': 9.0.0
+      '@types/uuid': 9.0.1
       '@vitest/coverage-c8': 0.27.0
       eslint: 8.31.0
       eslint-config-custom: workspace:*
@@ -109,7 +109,7 @@ importers:
       '@relmify/jest-fp-ts': 2.0.2_fp-ts@2.13.1+io-ts@2.2.19
       '@types/jest': 29.2.5
       '@types/node': 18.11.18
-      '@types/uuid': 9.0.0
+      '@types/uuid': 9.0.1
       '@vitest/coverage-c8': 0.27.0
       eslint: 8.31.0
       eslint-config-custom: link:../../packages/eslint-config-custom
@@ -3335,8 +3335,8 @@ packages:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: true
 
-  /@types/uuid/9.0.0:
-    resolution: {integrity: sha512-kr90f+ERiQtKWMz5rP32ltJ/BtULDI5RVO0uavn1HQUOwjx0R1h0rnDYNL0CepF1zL5bSY6FISAfd9tOdDhU5Q==}
+  /@types/uuid/9.0.1:
+    resolution: {integrity: sha512-rFT3ak0/2trgvp4yYZo5iKFEPsET7vKydKF+VRCxlQ9bpheehyAJH89dAkaLEq/j/RZXJIqcgsmPJKUP1Z28HA==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
