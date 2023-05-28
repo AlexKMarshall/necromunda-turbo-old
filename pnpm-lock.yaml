@@ -25,7 +25,7 @@ importers:
       '@types/koa': 2.13.5
       '@types/koa-bodyparser': 4.3.10
       '@types/koa-morgan': 1.0.5
-      '@types/koa__cors': 3.3.0
+      '@types/koa__cors': 3.3.1
       '@types/koa__router': 12.0.0
       '@types/morgan': 1.9.4
       '@types/node': 18.11.18
@@ -66,7 +66,7 @@ importers:
       '@types/koa': 2.13.5
       '@types/koa-bodyparser': 4.3.10
       '@types/koa-morgan': 1.0.5
-      '@types/koa__cors': 3.3.0
+      '@types/koa__cors': 3.3.1
       '@types/koa__router': 12.0.0
       '@types/morgan': 1.9.4
       '@types/node': 18.11.18
@@ -3168,8 +3168,8 @@ packages:
       '@types/node': 18.11.18
     dev: true
 
-  /@types/koa__cors/3.3.0:
-    resolution: {integrity: sha512-FUN8YxcBakIs+walVe3+HcNP+Bxd0SB8BJHBWkglZ5C1XQWljlKcEFDG/dPiCIqwVCUbc5X0nYDlH62uEhdHMA==}
+  /@types/koa__cors/3.3.1:
+    resolution: {integrity: sha512-aFGYhTFW7651KhmZZ05VG0QZJre7QxBxDj2LF1lf6GA/wSXEfKVAJxiQQWzRV4ZoMzQIO8vJBXKsUcRuvYK9qw==}
     dependencies:
       '@types/koa': 2.13.5
     dev: true
