@@ -238,22 +238,22 @@ importers:
   packages/eslint-config-custom:
     specifiers:
       eslint-config-next: 12.3.4
-      eslint-config-prettier: 8.5.0
+      eslint-config-prettier: 8.10.0
       eslint-config-turbo: 0.0.4
       eslint-plugin-react: 7.31.11
     dependencies:
       eslint-config-next: 12.3.4_5ujgynla27k2qkzlnkldjwsutm
-      eslint-config-prettier: 8.5.0_eslint@8.41.0
+      eslint-config-prettier: 8.10.0_eslint@8.41.0
       eslint-config-turbo: 0.0.4_eslint@8.41.0
       eslint-plugin-react: 7.31.11_eslint@8.41.0
 
   packages/eslint-config-custom-react:
     specifiers:
-      eslint-config-prettier: 8.5.0
+      eslint-config-prettier: 8.10.0
       eslint-config-turbo: 0.0.4
       eslint-plugin-react: 7.31.11
     dependencies:
-      eslint-config-prettier: 8.5.0_eslint@8.41.0
+      eslint-config-prettier: 8.10.0_eslint@8.41.0
       eslint-config-turbo: 0.0.4_eslint@8.41.0
       eslint-plugin-react: 7.31.11_eslint@8.41.0
 
@@ -5877,6 +5877,15 @@ packages:
       - supports-color
     dev: false
 
+  /eslint-config-prettier/8.10.0_eslint@8.41.0:
+    resolution: {integrity: sha512-SM8AMJdeQqRYT9O9zguiruQZaN7+z+E4eAP9oiLNGKMtomwaB1E9dcgUD6ZAn/eQAb52USbvezbiljfZUhbJcg==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.41.0
+    dev: false
+
   /eslint-config-prettier/8.5.0_eslint@8.26.0:
     resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
     hasBin: true
@@ -5885,15 +5894,6 @@ packages:
     dependencies:
       eslint: 8.26.0
     dev: true
-
-  /eslint-config-prettier/8.5.0_eslint@8.41.0:
-    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-    dependencies:
-      eslint: 8.41.0
-    dev: false
 
   /eslint-config-turbo/0.0.4_eslint@8.41.0:
     resolution: {integrity: sha512-HErPS/wfWkSdV9Yd2dDkhZt3W2B78Ih/aWPFfaHmCMjzPalh+5KxRRGTf8MOBQLCebcWJX0lP1Zvc1rZIHlXGg==}
