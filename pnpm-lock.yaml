@@ -23,7 +23,7 @@ importers:
       '@types/express': 4.17.17
       '@types/jest': 29.5.1
       '@types/koa': 2.13.5
-      '@types/koa-bodyparser': 4.3.10
+      '@types/koa-bodyparser': 4.3.12
       '@types/koa-morgan': 1.0.5
       '@types/koa__cors': 3.3.1
       '@types/koa__router': 12.0.0
@@ -36,7 +36,7 @@ importers:
       jest: 29.5.0
       jest-presets: workspace:*
       koa: 2.13.4
-      koa-bodyparser: 4.3.0
+      koa-bodyparser: 4.4.1
       koa-morgan: 1.0.1
       logger: workspace:*
       prisma: 4.6.1
@@ -53,7 +53,7 @@ importers:
       '@prisma/client': 4.6.1_prisma@4.6.1
       fp-ts: 2.13.1
       koa: 2.13.4
-      koa-bodyparser: 4.3.0
+      koa-bodyparser: 4.4.1
       koa-morgan: 1.0.1
       logger: link:../../packages/logger
       validation: link:../../packages/validation
@@ -64,7 +64,7 @@ importers:
       '@types/express': 4.17.17
       '@types/jest': 29.5.1
       '@types/koa': 2.13.5
-      '@types/koa-bodyparser': 4.3.10
+      '@types/koa-bodyparser': 4.3.12
       '@types/koa-morgan': 1.0.5
       '@types/koa__cors': 3.3.1
       '@types/koa__router': 12.0.0
@@ -3345,8 +3345,8 @@ packages:
       keyv: 4.5.0
     dev: true
 
-  /@types/koa-bodyparser/4.3.10:
-    resolution: {integrity: sha512-6ae05pjhmrmGhUR8GYD5qr5p9LTEMEGfGXCsK8VaSL+totwigm8+H/7MHW7K4854CMeuwRAubT8qcc/EagaeIA==}
+  /@types/koa-bodyparser/4.3.12:
+    resolution: {integrity: sha512-hKMmRMVP889gPIdLZmmtou/BijaU1tHPyMNmcK7FAHAdATnRcGQQy78EqTTxLH1D4FTsrxIzklAQCso9oGoebQ==}
     dependencies:
       '@types/koa': 2.13.5
     dev: true
@@ -8834,12 +8834,13 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /koa-bodyparser/4.3.0:
-    resolution: {integrity: sha512-uyV8G29KAGwZc4q/0WUAjH+Tsmuv9ImfBUF2oZVyZtaeo0husInagyn/JH85xMSxM0hEk/mbCII5ubLDuqW/Rw==}
+  /koa-bodyparser/4.4.1:
+    resolution: {integrity: sha512-kBH3IYPMb+iAXnrxIhXnW+gXV8OTzCu8VPDqvcDHW9SQrbkHmqPQtiZwrltNmSq6/lpipHnT7k7PsjlVD7kK0w==}
     engines: {node: '>=8.0.0'}
     dependencies:
       co-body: 6.1.0
       copy-to: 2.0.1
+      type-is: 1.6.18
     dev: false
 
   /koa-compose/4.1.0:
