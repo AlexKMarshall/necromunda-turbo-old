@@ -27,7 +27,7 @@
     "@vitest/coverage-c8": "0.31.1",
     "eslint": "8.41.0",
     "eslint-config-custom": "workspace:*",
-    "io-ts": "2.2.19",
+    "io-ts": "2.2.21",
     "jest": "29.5.0",
     "jest-presets": "workspace:*",
     "tsconfig": "workspace:*",
