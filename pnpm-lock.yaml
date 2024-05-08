@@ -45,7 +45,7 @@ importers:
       tsup: 6.7.0
       typescript: 4.9.5
       validation: workspace:*
-      zod: 3.19.1
+      zod: 3.23.8
     dependencies:
       '@koa/cors': 4.0.0
       '@koa/router': 12.0.0
@@ -57,7 +57,7 @@ importers:
       koa-morgan: 1.0.1
       logger: link:../../packages/logger
       validation: link:../../packages/validation
-      zod: 3.19.1
+      zod: 3.23.8
     devDependencies:
       '@types/body-parser': 1.19.2
       '@types/cors': 2.8.13
@@ -100,11 +100,11 @@ importers:
       uuid: 9.0.0
       vite: 4.3.9
       vitest: 0.31.1
-      zod: 3.19.1
+      zod: 3.23.8
     dependencies:
       fp-ts: 2.13.1
       uuid: 9.0.0
-      zod: 3.19.1
+      zod: 3.23.8
     devDependencies:
       '@relmify/jest-fp-ts': 2.0.2_fp-ts@2.13.1+io-ts@2.2.19
       '@types/jest': 29.5.1
@@ -13061,6 +13061,10 @@ packages:
 
   /zod/3.19.1:
     resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
+    dev: false
+
+  /zod/3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
     dev: false
 
   /zwitch/2.0.2:
