@@ -16,7 +16,7 @@
     "@koa/router": "12.0.0",
     "@necromunda/domain": "workspace:*",
     "@prisma/client": "4.6.1",
-    "fp-ts": "2.13.1",
+    "fp-ts": "2.16.9",
     "koa": "2.13.4",
     "koa-bodyparser": "4.3.0",
     "koa-morgan": "1.0.1",

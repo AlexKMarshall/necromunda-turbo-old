@@ -38,7 +38,7 @@
     "@remix-run/server-runtime": "^1.7.3",
     "bcryptjs": "^2.4.3",
     "clsx": "^1.2.1",
-    "fp-ts": "2.12.3",
+    "fp-ts": "2.16.9",
     "io-ts": "2.2.19",
     "isbot": "^3.5.3",
     "react": "^18.2.0",
